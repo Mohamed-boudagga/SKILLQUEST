@@ -1,0 +1,35 @@
+package main.galaxydefender;
+
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+
+/**
+ * Special quiz asteroid with distinct purple design.
+ * Triggers a question when destroyed.
+ */
+public class QuizAsteroid extends Asteroid {
+
+    public QuizAsteroid(double x, double y, int size, double speedY) {
+        super(x, y, size, speedY);
+        // Replace view with distinct purple design with "?"
+        Circle c = new Circle(size / 2.0);
+        c.setCenterX(size / 2.0);
+        c.setCenterY(size / 2.0);
+        c.setFill(Color.PURPLE);
+        c.setStroke(Color.MAGENTA);
+        c.setStrokeWidth(3);
+
+        Text text = new Text("?");
+        text.setFill(Color.WHITE);
+        text.setStyle("-fx-font-size: " + (size * 0.6) + "px; -fx-font-weight: bold;");
+
+        StackPane stack = new StackPane(c, text);
+        stack.setPrefSize(size, size);
+        // StackPane automatically centers children
+
+        view = stack;
+        syncView();
+    }
+}

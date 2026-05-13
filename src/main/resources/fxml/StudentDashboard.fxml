@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: #141e33;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentDashboardController">
+
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #1b2a4e; -fx-padding: 18 30; -fx-border-color: #101829; -fx-border-width: 0 0 2 0;">
+         <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #c4b5fd;" text="SkillQuest" />
+         <Label style="-fx-font-size: 14; -fx-text-fill: #7c3aed; -fx-font-weight: bold;" text="BATTLE ARENA" />
+         <Region HBox.hgrow="ALWAYS" />
+         <Label style="-fx-text-fill: #8b7fc8; -fx-font-size: 14;" text="Espace Etudiant" />
+         <Button onAction="#handleLogout" style="-fx-background-color: transparent; -fx-border-color: #7c3aed; -fx-border-radius: 8; -fx-text-fill: #c4b5fd; -fx-padding: 7 18; -fx-cursor: hand;" text="Deconnexion" />
+      </HBox>
+   </top>
+
+   <center>
+      <!-- Vue Categorie (affichee par defaut) -->
+      <VBox fx:id="viewCategories" spacing="30" style="-fx-padding: 40;" alignment="TOP_CENTER">
+         <Label text="CHOISISSEZ UNE CATEGORIE" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
+         <HBox fx:id="categoriesBox" spacing="40" alignment="CENTER"/>
+      </VBox>
+   </center>
+
+   <!-- Vue Liste de Jeux (cachee par defaut) -->
+   <bottom>
+      <VBox fx:id="viewGames" visible="false" managed="false" spacing="20" style="-fx-padding: 0 40 40 40;" VBox.vgrow="ALWAYS">
+         <HBox spacing="20" alignment="CENTER_LEFT">
+            <Button fx:id="btnBack" text="RETOUR" onAction="#handleBackToCategories"
+                    style="-fx-background-color: transparent; -fx-text-fill: #c4b5fd; -fx-border-color: #7c3aed; -fx-border-radius: 8; -fx-padding: 8 20; -fx-cursor: hand;"/>
+            <Label fx:id="lblCategoryTitle" text="" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: white;"/>
+         </HBox>
+         <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+            <FlowPane fx:id="gamesContainer" hgap="25.0" vgap="25.0" style="-fx-padding: 10;"/>
+         </ScrollPane>
+      </VBox>
+   </bottom>
+</BorderPane>

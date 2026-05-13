@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane fx:id="mainPane" prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BattleGameController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #141e33; -fx-padding: 15;">
+         <children>
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #00d4ff;" text="SkillQuest : BATTLE ARENA" />
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER_RIGHT" spacing="5.0">
+               <children>
+                  <Label fx:id="lblBestScore" style="-fx-text-fill: #8b949e; -fx-font-size: 12;" text="RECORD: 0" />
+                  <Label fx:id="lblScore" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;" text="DATA: 0" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label style="-fx-text-fill: white; -fx-font-size: 12;" text="INTÉGRITÉ DU VAISSEAU" />
+                  <ProgressBar fx:id="playerHealth" prefWidth="200.0" progress="1.0" style="-fx-accent: #00d4ff;" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <StackPane style="-fx-background-color: #050510;">
+         <children>
+            <Pane fx:id="arena">
+               <children>
+                  <ImageView fitHeight="700.0" fitWidth="1100.0" pickOnBounds="true" opacity="0.4">
+                     <image><Image url="@../images/battle_bg.png" /></image>
+                  </ImageView>
+                  
+                  <Pane fx:id="objectContainer" prefHeight="700.0" prefWidth="1100.0" />
+
+                  <ImageView fx:id="playerAvatar" fitHeight="100.0" fitWidth="100.0" layoutX="500" layoutY="550">
+                     <image><Image url="@../images/spaceship.png" /></image>
+                  </ImageView>
+               </children>
+            </Pane>
+            
+            <!-- Menu de départ -->
+            <VBox fx:id="startMenu" alignment="CENTER" spacing="30.0" style="-fx-background-color: rgba(5,5,20,0.95);">
+               <children>
+                  <Label style="-fx-font-size: 60; -fx-text-fill: #00d4ff; -fx-font-weight: bold;" text="COSMIC BATTLE" />
+                  <Label text="DÉTRUISEZ LES ASTÉROÏDES ET RÉPONDEZ AUX QUESTIONS" style="-fx-text-fill: white; -fx-font-size: 16;" />
+                  <Button onAction="#selectModeIA" prefWidth="400" style="-fx-font-size: 20; -fx-padding: 15; -fx-background-color: #00d4ff; -fx-text-fill: black;" text="LANCER LA MISSION" />
+                  <Button onAction="#handleQuit" prefWidth="300" style="-fx-font-size: 18; -fx-padding: 15; -fx-background-color: transparent; -fx-border-color: #ff4d4d; -fx-text-fill: #ff4d4d;" text="ABANDONNER" />
+               </children>
+            </VBox>
+
+            <!-- Panel de question -->
+            <VBox fx:id="questionPanel" alignment="CENTER" spacing="25.0" style="-fx-background-color: rgba(10, 10, 30, 0.95); -fx-border-color: #00d4ff; -fx-border-width: 3; -fx-padding: 40; -fx-background-radius: 20; -fx-border-radius: 20;" visible="false" maxWidth="800" maxHeight="550">
+               <children>
+                  <Label style="-fx-text-fill: #ffdb4d; -fx-font-weight: bold; -fx-font-size: 18;" text="[ INTERCEPTION DE DONNÉES SPATIALES ]" />
+                  <Label fx:id="lblTimer" style="-fx-font-size: 45; -fx-text-fill: #ff4d4d; -fx-font-weight: bold;" text="15" />
+                  <Label fx:id="lblQuestion" style="-fx-font-size: 26; -fx-text-fill: white; -fx-text-alignment: center;" text="DÉCRYPTAGE REQUIS POUR DÉTRUIRE LA CIBLE..." wrapText="true" />
+                  <VBox spacing="15.0" alignment="CENTER">
+                     <children>
+                        <Button fx:id="btnOpt1" maxWidth="Infinity" onAction="#handleAnswer" style="-fx-background-color: rgba(0,212,255,0.2); -fx-border-color: #00d4ff; -fx-text-fill: white; -fx-font-size: 18; -fx-padding: 12;" text="Option 1" />
+                        <Button fx:id="btnOpt2" maxWidth="Infinity" onAction="#handleAnswer" style="-fx-background-color: rgba(0,212,255,0.2); -fx-border-color: #00d4ff; -fx-text-fill: white; -fx-font-size: 18; -fx-padding: 12;" text="Option 2" />
+                        <Button fx:id="btnOpt3" maxWidth="Infinity" onAction="#handleAnswer" style="-fx-background-color: rgba(0,212,255,0.2); -fx-border-color: #00d4ff; -fx-text-fill: white; -fx-font-size: 18; -fx-padding: 12;" text="Option 3" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+            <!-- Résultat Final -->
+            <VBox fx:id="badgeOverlay" alignment="CENTER" spacing="35.0" style="-fx-background-color: rgba(5,5,15,0.98);" visible="false">
+               <children>
+                  <Label fx:id="lblResultTitle" style="-fx-font-size: 65; -fx-text-fill: #00d4ff; -fx-font-weight: bold;" text="MISSION ACCOMPLIE" />
+                  <ImageView fx:id="imgBadge" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblBadgeLarge" style="-fx-font-size: 40; -fx-text-fill: #ffdb4d; -fx-font-weight: bold;" text="COMMANDANT D'ÉLITE" />
+                  <Label fx:id="lblFinalScore" style="-fx-text-fill: white; -fx-font-size: 24;" text="SCORE: 0" />
+                  <HBox spacing="30.0" alignment="CENTER">
+                     <children>
+                        <Button onAction="#handleRestart" prefWidth="250" style="-fx-font-size: 18; -fx-padding: 12; -fx-background-color: #00d4ff; -fx-text-fill: black;" text="REESSAYER" />
+                        <Button onAction="#handleQuit" prefWidth="250" style="-fx-font-size: 18; -fx-padding: 12; -fx-background-color: transparent; -fx-border-color: #666; -fx-text-fill: #666;" text="QUITTER" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

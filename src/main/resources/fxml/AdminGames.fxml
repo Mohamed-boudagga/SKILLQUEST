@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1200" prefHeight="800" style="-fx-background-color: #0a1628;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminGamesController">
+
+    <!-- ===== SIDEBAR GAUCHE (dark navy) ===== -->
+    <left>
+        <VBox spacing="8" prefWidth="220" style="-fx-background-color: #06101e; -fx-padding: 25 15 20 15;">
+            <!-- Logo -->
+            <Label text="SkillQuest" style="-fx-text-fill: #e63946; -fx-font-size: 22; -fx-font-weight: bold; -fx-padding: 0 0 10 5;"/>
+            <Label text="ADMIN" style="-fx-text-fill: #4a6090; -fx-font-size: 11; -fx-padding: 0 0 8 5;"/>
+            <Separator/>
+
+            <!-- Menu items -->
+            <VBox spacing="4" style="-fx-padding: 12 0 0 0;">
+                <Button text="  Etudiants" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: #8090b0; -fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-padding: 10 8; -fx-background-radius: 8;"/>
+                <Button text="  Cours" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: #8090b0; -fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-padding: 10 8; -fx-background-radius: 8;"/>
+                <Button text="  Tests" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: #8090b0; -fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-padding: 10 8; -fx-background-radius: 8;"/>
+                <Button text="  Jeux" maxWidth="Infinity" styleClass="btn-primary" style="-fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-padding: 10 8; -fx-background-radius: 8;"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Deconnexion -->
+            <Button text="Deconnexion" onAction="#handleLogout" maxWidth="Infinity" styleClass="btn-primary" style="-fx-font-size: 13;"/>
+        </VBox>
+    </left>
+
+    <!-- ===== CONTENU PRINCIPAL ===== -->
+    <center>
+        <StackPane style="-fx-background-color: #0a1628;">
+            <VBox spacing="20" style="-fx-padding: 30 35;">
+
+                <!-- Header -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <Label text="Gestion des Jeux" style="-fx-text-fill: white; -fx-font-size: 30; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ Ajouter" onAction="#handleNavAdd" styleClass="btn-add" style="-fx-font-size: 15; -fx-padding: 10 25;"/>
+                </HBox>
+
+                <!-- Barre de recherche (style arrondi comme sur la photo) -->
+                <HBox style="-fx-background-color: #0d1b3e; -fx-background-radius: 25; -fx-padding: 4 15; -fx-border-radius: 25; -fx-border-color: #1e3060; -fx-border-width: 1;" prefWidth="400" maxWidth="400">
+                    <Label text="Q" style="-fx-text-fill: #4a6090; -fx-font-size: 14; -fx-padding: 5 8 5 0;"/>
+                    <TextField fx:id="txtSearchId" promptText="Rechercher..." HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-padding: 5 0;"/>
+                </HBox>
+
+                <!-- Tableau BLANC -->
+                <TableView fx:id="tableGames" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableClick">
+                    <columns>
+                        <TableColumn fx:id="colType" text="TYPE DE JEU" prefWidth="280"/>
+                        <TableColumn fx:id="colDifficulty" text="DIFFICULTE" prefWidth="150"/>
+                        <TableColumn fx:id="colTime" text="TEMPS (s)" prefWidth="130"/>
+                        <TableColumn fx:id="colScore" text="SCORE MAX" prefWidth="130"/>
+                        <TableColumn fx:id="colActions" text="ACTIONS" prefWidth="200"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+
+            <!-- Overlay -->
+            <Pane fx:id="overlay" visible="false" style="-fx-background-color: rgba(0,0,0,0.65);" onMouseClicked="#handleCancel"/>
+
+            <!-- Formulaire lateral (sans champ ID visible) -->
+            <HBox fx:id="sidePanel" visible="false" alignment="CENTER_RIGHT">
+                <Region HBox.hgrow="ALWAYS" onMouseClicked="#handleCancel"/>
+                <VBox prefWidth="420" spacing="16" style="-fx-background-color: #06101e; -fx-padding: 30; -fx-border-color: #1e3060; -fx-border-width: 0 0 0 1;">
+                    <Label fx:id="lblFormTitle" text="Nouveau Jeu" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+                    <Separator/>
+
+                    <!-- ID cache mais necessaire pour edition -->
+                    <TextField fx:id="txtId" visible="false" managed="false"/>
+
+                    <VBox spacing="5">
+                        <Label text="Type de Jeu :" style="-fx-text-fill: #8090b0; -fx-font-size: 13;"/>
+                        <TextField fx:id="txtType" promptText="Ex: Quiz Java, Correction Code..."/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="Difficulte :" style="-fx-text-fill: #8090b0; -fx-font-size: 13;"/>
+                        <HBox spacing="15">
+                            <fx:define><ToggleGroup fx:id="difficultyGroup"/></fx:define>
+                            <RadioButton fx:id="rbFacile" text="Facile" toggleGroup="$difficultyGroup" style="-fx-text-fill: #10b981;"/>
+                            <RadioButton fx:id="rbMoyen" text="Moyen" toggleGroup="$difficultyGroup" style="-fx-text-fill: #f59e0b;"/>
+                            <RadioButton fx:id="rbDifficile" text="Difficile" toggleGroup="$difficultyGroup" style="-fx-text-fill: #ef4444;"/>
+                        </HBox>
+                    </VBox>
+
+                    <HBox spacing="12">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Temps (sec) :" style="-fx-text-fill: #8090b0; -fx-font-size: 13;"/>
+                            <TextField fx:id="txtTime" promptText="Ex: 30"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Score Max :" style="-fx-text-fill: #8090b0; -fx-font-size: 13;"/>
+                            <TextField fx:id="txtScore" promptText="Ex: 1000"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="5">
+                        <Label text="Description :" style="-fx-text-fill: #8090b0; -fx-font-size: 13;"/>
+                        <TextArea fx:id="txtDescription" prefHeight="90" wrapText="true"/>
+                    </VBox>
+
+                    <Button fx:id="btnManageQuestions" text="CONFIGURER LE CONTENU" maxWidth="Infinity"
+                            onAction="#handleManageQuestions" styleClass="btn-secondary" visible="false"/>
+
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="10">
+                        <Button text="ANNULER" onAction="#handleCancel" prefWidth="150"
+                                style="-fx-background-color: transparent; -fx-text-fill: #8090b0; -fx-border-color: #1e3060; -fx-border-radius: 8; -fx-padding: 9 20;"/>
+                        <Button fx:id="btnSave" text="ENREGISTRER" onAction="#handleSave" prefWidth="220" styleClass="btn-primary"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </StackPane>
+    </center>
+</BorderPane>

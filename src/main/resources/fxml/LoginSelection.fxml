@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1b2a4e;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginSelectionController">
+   <children>
+      <VBox alignment="CENTER" spacing="50.0">
+         <children>
+            <VBox alignment="CENTER" spacing="8">
+                <Label style="-fx-font-size: 48; -fx-text-fill: white; -fx-font-weight: bold;" text="SKILLQUEST" />
+                <Label style="-fx-text-fill: #f45b69; -fx-font-size: 18; -fx-font-weight: bold;" text="BATTLE ARENA" />
+                <Label style="-fx-text-fill: #6b82b5; -fx-font-size: 14;" text="Plateforme d'apprentissage gamifie" />
+            </VBox>
+            
+            <HBox alignment="CENTER" spacing="50.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #0d1b3e; -fx-padding: 40; -fx-pref-width: 300; -fx-background-radius: 15; -fx-border-color: #2d3f6b; -fx-border-width: 1; -fx-border-radius: 15; -fx-cursor: hand;" onMouseClicked="#handleCardAdminClick">
+                     <children>
+                        <Label text="ADMIN" style="-fx-text-fill: #f45b69; -fx-font-size: 24; -fx-font-weight: bold;" />
+                        <Label text="Gerer les jeux et contenus" style="-fx-text-fill: #6b82b5; -fx-font-size: 13;" />
+                        <Button text="CONFIGURER" onAction="#handleAdminLogin" styleClass="btn-primary" prefWidth="200" />
+                     </children>
+                  </VBox>
+
+                  <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #0d1b3e; -fx-padding: 40; -fx-pref-width: 300; -fx-background-radius: 15; -fx-border-color: #2d3f6b; -fx-border-width: 1; -fx-border-radius: 15; -fx-cursor: hand;" onMouseClicked="#handleCardUserClick">
+                     <children>
+                        <Label text="ETUDIANT" style="-fx-text-fill: #3a86ff; -fx-font-size: 24; -fx-font-weight: bold;" />
+                        <Label text="Jouer aux quiz et defis" style="-fx-text-fill: #6b82b5; -fx-font-size: 13;" />
+                        <Button text="DEMARRER" onAction="#handleUserLogin" styleClass="btn-secondary" prefWidth="200" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>
