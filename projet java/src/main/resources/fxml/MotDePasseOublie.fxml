@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.MotDePasseOublieController"
+      spacing="20" alignment="CENTER" prefWidth="400" prefHeight="450"
+      style="-fx-background-color: #1a1a2e; -fx-padding: 30;">
+
+    <Label text="Récupération de compte"
+           style="-fx-text-fill: #e94560; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <StackPane VBox.vgrow="ALWAYS">
+        <!-- ETAPE 1 : Saisie de l'Email -->
+        <VBox fx:id="paneEmail" spacing="15" alignment="CENTER">
+            <Label text="Entrez votre adresse email pour recevoir un code de vérification."
+                   style="-fx-text-fill: #a8a8b3; -fx-font-size: 13px;" wrapText="true" textAlignment="CENTER"/>
+            <TextField fx:id="emailInput" promptText="Email"
+                       style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+            <Button text="Envoyer le code" onAction="#handleEnvoyerCode"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 10 30;"/>
+        </VBox>
+
+        <!-- ETAPE 2 : Saisie du Code -->
+        <VBox fx:id="paneCode" spacing="15" alignment="CENTER" visible="false">
+            <Label text="Un code de vérification a été envoyé à votre adresse email."
+                   style="-fx-text-fill: #a8a8b3; -fx-font-size: 13px;" wrapText="true" textAlignment="CENTER"/>
+            <TextField fx:id="codeInput" promptText="Code à 6 chiffres"
+                       style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+            <Button text="Vérifier le code" onAction="#handleVerifierCode"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 10 30;"/>
+        </VBox>
+
+        <!-- ETAPE 3 : Nouveau Mot de Passe -->
+        <VBox fx:id="paneReset" spacing="15" alignment="CENTER" visible="false">
+            <Label text="Créez votre nouveau mot de passe."
+                   style="-fx-text-fill: #a8a8b3; -fx-font-size: 13px;"/>
+            
+            <StackPane maxWidth="300">
+                <PasswordField fx:id="newPasswordField" promptText="Nouveau mot de passe"
+                               style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+                <TextField fx:id="newPasswordVisibleField" promptText="Nouveau mot de passe" visible="false"
+                           style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+                <ToggleButton fx:id="eyeButton" onAction="#togglePassword" text="👁"
+                              StackPane.alignment="CENTER_RIGHT"
+                              style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3; -fx-cursor:hand; -fx-font-size:14px; -fx-padding:0 10 0 0;"/>
+            </StackPane>
+
+            <StackPane maxWidth="300">
+                <PasswordField fx:id="confirmNewPasswordField" promptText="Confirmer le mot de passe"
+                               style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+                <TextField fx:id="confirmNewPasswordVisibleField" promptText="Confirmer le mot de passe" visible="false"
+                           style="-fx-background-color:#16213e; -fx-text-fill:white; -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+                <ToggleButton fx:id="confirmEyeButton" onAction="#toggleConfirmPassword" text="👁"
+                              StackPane.alignment="CENTER_RIGHT"
+                              style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3; -fx-cursor:hand; -fx-font-size:14px; -fx-padding:0 10 0 0;"/>
+            </StackPane>
+
+            <Button text="Réinitialiser le mot de passe" onAction="#handleReinitialiser"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 10 30;"/>
+        </VBox>
+    </StackPane>
+
+    <Label fx:id="messageLabel" text="" wrapText="true" textAlignment="CENTER"
+           style="-fx-font-size: 12px;"/>
+    
+    <Hyperlink text="Retour à la connexion" onAction="#handleRetour"
+               style="-fx-text-fill: #a8a8b3; -fx-font-size: 11px;"/>
+
+</VBox>

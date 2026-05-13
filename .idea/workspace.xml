@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be4d30c9-4f7d-440c-85a5-ca509f9c7001" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/projet java/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet java/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet java/src/main/java/models/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/src/main/java/models/Etudiant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet java/src/main/java/services/ServiceEtudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/src/main/java/services/ServiceEtudiant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet java/src/main/java/utils/MyDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/src/main/java/utils/MyDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet java/src/main/resources/skillquest.sql" beforeDir="false" afterPath="$PROJECT_DIR$/projet java/src/main/resources/skillquest.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/MSI/Desktop/pjf" value="3CilkPL1iPWcNgGh3wQIo1lpvft" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/projet java" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3CilkPL1iPWcNgGh3wQIo1lpvft" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PasswordMigration.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SkillQuest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.projet_java [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestion-etudiant&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MSI/Desktop/pjf&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.19425288&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.SkillQuest">
+    <configuration name="PasswordMigration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utils.PasswordMigration" />
+      <module name="projet_java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkillQuest" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="controllers.App" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\Downloads\openjfx-17.0.6_windows-x64_bin-sdk\javafx-sdk-17.0.6\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/projet java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PasswordMigration" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be4d30c9-4f7d-440c-85a5-ca509f9c7001" name="Changes" comment="" />
+      <created>1776876413923</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776876413923</updated>
+      <workItem from="1776876415172" duration="693000" />
+      <workItem from="1776877129687" duration="7147000" />
+      <workItem from="1777497077558" duration="17000" />
+      <workItem from="1777725324894" duration="426000" />
+      <workItem from="1777725762323" duration="555000" />
+      <workItem from="1777726337527" duration="148000" />
+      <workItem from="1777726498187" duration="24000" />
+      <workItem from="1777726542486" duration="147000" />
+      <workItem from="1777726703153" duration="1405000" />
+      <workItem from="1777728124633" duration="377000" />
+      <workItem from="1777730397068" duration="8792000" />
+      <workItem from="1777887098327" duration="568000" />
+      <workItem from="1778077554590" duration="343000" />
+      <workItem from="1778077910887" duration="668000" />
+      <workItem from="1778078972037" duration="560000" />
+      <workItem from="1778079557047" duration="2426000" />
+      <workItem from="1778083198632" duration="177000" />
+      <workItem from="1778083391283" duration="545000" />
+      <workItem from="1778083952259" duration="482000" />
+      <workItem from="1778084452860" duration="261000" />
+      <workItem from="1778084729864" duration="1772000" />
+      <workItem from="1778151100401" duration="5319000" />
+      <workItem from="1778435509460" duration="618000" />
+      <workItem from="1778436434182" duration="435000" />
+      <workItem from="1778436918201" duration="352000" />
+      <workItem from="1778437287245" duration="275000" />
+      <workItem from="1778437577351" duration="206000" />
+      <workItem from="1778439628850" duration="168000" />
+      <workItem from="1778439811652" duration="436000" />
+      <workItem from="1778440263042" duration="1051000" />
+      <workItem from="1778441332314" duration="365000" />
+      <workItem from="1778441874844" duration="794000" />
+      <workItem from="1778443166106" duration="661000" />
+      <workItem from="1778443997574" duration="246000" />
+      <workItem from="1778444256287" duration="701000" />
+      <workItem from="1778445902188" duration="344000" />
+      <workItem from="1778531615329" duration="32000" />
+      <workItem from="1778536204488" duration="511000" />
+      <workItem from="1778536751072" duration="211000" />
+      <workItem from="1778536977007" duration="1133000" />
+      <workItem from="1778538293071" duration="627000" />
+      <workItem from="1778539093672" duration="278000" />
+      <workItem from="1778544532439" duration="140000" />
+      <workItem from="1778544685844" duration="1236000" />
+      <workItem from="1778546535158" duration="224000" />
+      <workItem from="1778546781768" duration="85000" />
+      <workItem from="1778546880602" duration="106000" />
+      <workItem from="1778546999061" duration="1060000" />
+      <workItem from="1778666936716" duration="1191000" />
+      <workItem from="1778668421995" duration="70000" />
+      <workItem from="1778709709142" duration="132000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

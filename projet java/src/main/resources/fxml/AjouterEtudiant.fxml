@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AjouterEtudiantController"
+            prefWidth="480" prefHeight="580"
+            style="-fx-background-color:#1a1a2e;">
+
+    <fx:define>
+        <ToggleGroup fx:id="sexeGroup"/>
+    </fx:define>
+
+    <VBox spacing="14" alignment="TOP_CENTER"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <padding><Insets top="30" bottom="30" left="50" right="50"/></padding>
+
+        <Label fx:id="titreForm" text="Ajouter un Étudiant"
+               style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#e94560;"/>
+
+        <!-- Nom -->
+        <TextField fx:id="nomField" promptText="Nom *"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                          -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+
+        <!-- Prénom -->
+        <TextField fx:id="prenomField" promptText="Prénom *"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                          -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+
+        <!-- Email -->
+        <TextField fx:id="emailField" promptText="Email *"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                          -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+
+        <!-- Mot de passe -->
+        <StackPane>
+            <PasswordField fx:id="passwordField" promptText="Mot de passe *"
+                           style="-fx-background-color:#16213e; -fx-text-fill:white;
+                                  -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                                  -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+            <TextField fx:id="passwordVisibleField" promptText="Mot de passe *" visible="false"
+                       style="-fx-background-color:#16213e; -fx-text-fill:white;
+                              -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                              -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+            <ToggleButton fx:id="eyeButton" onAction="#togglePassword" text="👁"
+                          StackPane.alignment="CENTER_RIGHT"
+                          style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                                 -fx-cursor:hand; -fx-font-size:16px; -fx-padding:0 10 0 0;"/>
+        </StackPane>
+
+        <!-- Confirmation Mot de passe -->
+        <StackPane>
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirmer le mot de passe *"
+                           style="-fx-background-color:#16213e; -fx-text-fill:white;
+                                  -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                                  -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+            <TextField fx:id="confirmPasswordVisibleField" promptText="Confirmer le mot de passe *" visible="false"
+                       style="-fx-background-color:#16213e; -fx-text-fill:white;
+                              -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                              -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10 40 10 10;"/>
+            <ToggleButton fx:id="confirmEyeButton" onAction="#toggleConfirmPassword" text="👁"
+                          StackPane.alignment="CENTER_RIGHT"
+                          style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                                 -fx-cursor:hand; -fx-font-size:16px; -fx-padding:0 10 0 0;"/>
+        </StackPane>
+
+        <!-- Téléphone -->
+        <TextField fx:id="telephoneField" promptText="Téléphone (8 chiffres)"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                          -fx-border-color:#0f3460; -fx-border-radius:8; -fx-padding:10;"/>
+
+        <!-- Sexe -->
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label text="Sexe :" style="-fx-text-fill:#a8a8b3; -fx-font-size:13px;"/>
+            <RadioButton fx:id="radioM" text="Masculin"
+                         toggleGroup="$sexeGroup" selected="true"
+                         style="-fx-text-fill:white;"/>
+            <RadioButton fx:id="radioF" text="Féminin"
+                         toggleGroup="$sexeGroup"
+                         style="-fx-text-fill:white;"/>
+        </HBox>
+
+        <!-- Niveau -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Niveau :" style="-fx-text-fill:#a8a8b3; -fx-font-size:13px;"/>
+            <Spinner fx:id="niveauSpinner" prefWidth="80"
+                     style="-fx-background-color:#16213e; -fx-text-fill:white;"/>
+        </HBox>
+
+        <!-- Message -->
+        <Label fx:id="messageLabel" text="" wrapText="true"
+               style="-fx-font-size:12px; -fx-text-fill:#e94560;" maxWidth="380"/>
+
+        <!-- Boutons -->
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="Annuler" onAction="#handleAnnuler"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-border-color:#a8a8b3; -fx-border-radius:6;
+                           -fx-background-radius:6; -fx-padding:10 25; -fx-cursor:hand;"/>
+            <Button fx:id="btnSauvegarder" text="Sauvegarder"
+                    onAction="#handleSauvegarder"
+                    style="-fx-background-color:#e94560; -fx-text-fill:white;
+                           -fx-font-weight:bold; -fx-background-radius:6;
+                           -fx-padding:10 25; -fx-cursor:hand;"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>

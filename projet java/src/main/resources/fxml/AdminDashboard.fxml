@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AdminController"
+            prefWidth="1100" prefHeight="700"
+            stylesheets="@../css/style.css"
+            style="-fx-background-color:#1a1a2e;">
+
+    <!-- ===== BARRE LATERALE ===== -->
+    <left>
+        <VBox spacing="5" prefWidth="200"
+              style="-fx-background-color:#16213e; -fx-padding:20;">
+
+            <Label text="SkillQuest"
+                   style="-fx-font-size:22px; -fx-font-weight:bold;
+                          -fx-text-fill:#e94560; -fx-padding:0 0 20 0;"/>
+            <Label text="ADMIN"
+                   style="-fx-font-size:11px; -fx-text-fill:#a8a8b3; -fx-padding:0 0 20 10;"/>
+
+            <Button fx:id="btnEtudiants" text="👥  Étudiants"
+                    onAction="#afficherEtudiants"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:#e94560; -fx-text-fill:white;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button fx:id="btnCours" text="📚  Cours"
+                    onAction="#afficherCours"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button fx:id="btnTests" text="📝  Tests"
+                    onAction="#afficherTests"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button fx:id="btnCertificats" text="🎓  Certificats"
+                    onAction="#afficherCertificats"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button fx:id="btnJeux" text="🎮  Jeux"
+                    onAction="#afficherJeux"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="🚪  Déconnexion"
+                    onAction="#handleDeconnexion"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#e94560;
+                           -fx-font-size:13px; -fx-border-color:#e94560;
+                           -fx-border-radius:6; -fx-background-radius:6;
+                           -fx-padding:8; -fx-cursor:hand;"/>
+        </VBox>
+    </left>
+
+    <!-- ===== CONTENU PRINCIPAL ===== -->
+    <center>
+        <VBox spacing="15" style="-fx-padding:25;">
+
+            <!-- En-tête -->
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label fx:id="titreSection" text="Gestion des Étudiants"
+                       style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:white;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnAjouter" text="+ Ajouter"
+                        onAction="#handleAjouter"
+                        style="-fx-background-color:#e94560; -fx-text-fill:white;
+                               -fx-font-size:13px; -fx-background-radius:6;
+                               -fx-padding:8 16 8 16; -fx-cursor:hand;"/>
+            </HBox>
+
+            <!-- Barre de recherche et Filtres -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="rechercheField" promptText="🔍  Rechercher..."
+                           onKeyReleased="#handleRecherche"
+                           style="-fx-background-color:#16213e; -fx-text-fill:white;
+                                  -fx-prompt-text-fill:#a8a8b3; -fx-background-radius:8;
+                                  -fx-border-color:#0f3460; -fx-border-radius:8;
+                                  -fx-padding:8; -fx-font-size:13px;"
+                           HBox.hgrow="ALWAYS"/>
+                
+                <ComboBox fx:id="filtreCombo" onAction="#handleRecherche"
+                          style="-fx-background-color:#16213e; -fx-text-fill:white;
+                                 -fx-border-color:#0f3460; -fx-border-radius:8;
+                                 -fx-padding:5; -fx-font-size:13px;"
+                          prefWidth="150"/>
+            </HBox>
+
+            <!-- Tableau Étudiants -->
+            <TableView fx:id="tableEtudiants" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colNom"       text="Nom"        prefWidth="130"/>
+                    <TableColumn fx:id="colPrenom"    text="Prénom"     prefWidth="130"/>
+                    <TableColumn fx:id="colEmail"     text="Email"      prefWidth="180"/>
+                    <TableColumn fx:id="colTelephone" text="Téléphone"  prefWidth="100"/>
+                    <TableColumn fx:id="colSexe"      text="Sexe"       prefWidth="60"/>
+                    <TableColumn fx:id="colNiveau"    text="Niveau"     prefWidth="60"/>
+                    <TableColumn fx:id="colBloque"    text="Bloqué"     prefWidth="70"/>
+                    <TableColumn fx:id="colActions"   text="Actions"    prefWidth="160"/>
+                </columns>
+            </TableView>
+
+            <!-- Tableau Cours -->
+            <TableView fx:id="tableCours" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <columns>
+                    <TableColumn fx:id="colCoursTitre"   text="Titre"         prefWidth="250"/>
+                    <TableColumn fx:id="colCoursNiveau"  text="Niveau requis" prefWidth="120"/>
+                    <TableColumn fx:id="colCoursAdmin"   text="Admin ID"      prefWidth="80"/>
+                    <TableColumn fx:id="colCoursActions" text="Actions"       prefWidth="160"/>
+                </columns>
+            </TableView>
+
+            <!-- Tableau Tests -->
+            <TableView fx:id="tableTests" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <columns>
+                    <TableColumn fx:id="colTestTitre"   text="Titre"      prefWidth="250"/>
+                    <TableColumn fx:id="colTestScore"   text="Score Min"  prefWidth="100"/>
+                    <TableColumn fx:id="colTestCours"   text="Cours ID"   prefWidth="80"/>
+                    <TableColumn fx:id="colTestActions" text="Actions"    prefWidth="160"/>
+                </columns>
+            </TableView>
+
+            <!-- Tableau Certificats -->
+            <TableView fx:id="tableCertificats" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <columns>
+                    <TableColumn fx:id="colCertifNom"     text="Nom"       prefWidth="280"/>
+                    <TableColumn fx:id="colCertifTest"    text="Test ID"   prefWidth="80"/>
+                    <TableColumn fx:id="colCertifActions" text="Actions"   prefWidth="160"/>
+                </columns>
+            </TableView>
+
+            <!-- Tableau Jeux -->
+            <TableView fx:id="tableJeux" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <columns>
+                    <TableColumn fx:id="colJeuNom"     text="Nom"    prefWidth="210"/>
+                    <TableColumn fx:id="colJeuType"    text="Type"   prefWidth="100"/>
+                    <TableColumn fx:id="colJeuActions" text="Actions" prefWidth="160"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.ModifierProfilController"
+      spacing="0" prefWidth="520" prefHeight="580"
+      style="-fx-background-color: #1a1a2e;">
+
+    <!-- Header -->
+    <VBox style="-fx-background-color: #16213e; -fx-padding: 25 30 20 30;" spacing="5">
+        <Label text="Modifier mon Profil"
+               style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Label text="Mettez à jour vos informations personnelles"
+               style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;"/>
+    </VBox>
+
+    <!-- Body -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: #1a1a2e; -fx-background-color: #1a1a2e;">
+        <VBox spacing="18" style="-fx-padding: 25 30 10 30; -fx-background-color: #1a1a2e;">
+
+            <!-- Photo de profil -->
+            <VBox alignment="CENTER" spacing="12">
+                <StackPane>
+                    <ImageView fx:id="photoView" fitWidth="100" fitHeight="100" preserveRatio="true"
+                               style="-fx-cursor: hand;"/>
+                    <StackPane style="-fx-background-color:#e94560; -fx-background-radius:50; -fx-min-width:100; -fx-min-height:100;"
+                               fx:id="avatarFallback">
+                        <Label fx:id="avatarInitialEdit" text="?"
+                               style="-fx-text-fill:white; -fx-font-size:36px; -fx-font-weight:bold;"/>
+                    </StackPane>
+                </StackPane>
+                <Button fx:id="btnPhoto" text="📷 Changer la photo" onAction="#handleChoisirPhoto"
+                        style="-fx-background-color:transparent; -fx-text-fill:#e94560; -fx-border-color:#e94560; -fx-border-radius:20; -fx-padding: 5 15; -fx-cursor:hand;"/>
+            </VBox>
+
+            <Separator style="-fx-opacity: 0.15;"/>
+
+            <!-- Nom / Prénom -->
+            <HBox spacing="15">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Nom" style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                    <TextField fx:id="nomField"
+                               style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8;"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Prénom" style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                    <TextField fx:id="prenomField"
+                               style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="Adresse Email" style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                <TextField fx:id="emailField"
+                           style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8;"/>
+            </VBox>
+
+            <!-- Mot de passe -->
+            <VBox spacing="5">
+                <Label text="Nouveau mot de passe (laisser vide pour ne pas changer)"
+                       style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                <StackPane>
+                    <PasswordField fx:id="passwordField"
+                                   style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8 40 8 8;"/>
+                    <TextField fx:id="passwordVisibleField" visible="false"
+                               style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8 40 8 8;"/>
+                    <ToggleButton fx:id="eyeButton" onAction="#togglePassword" text="👁"
+                                  StackPane.alignment="CENTER_RIGHT"
+                                  style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                                         -fx-cursor:hand; -fx-font-size:14px; -fx-padding:0 10 0 0;"/>
+                </StackPane>
+            </VBox>
+
+            <!-- Confirmation Mot de passe -->
+            <VBox spacing="5">
+                <Label text="Confirmer le nouveau mot de passe"
+                       style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                <StackPane>
+                    <PasswordField fx:id="confirmPasswordField"
+                                   style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8 40 8 8;"/>
+                    <TextField fx:id="confirmPasswordVisibleField" visible="false"
+                               style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8 40 8 8;"/>
+                    <ToggleButton fx:id="confirmEyeButton" onAction="#toggleConfirmPassword" text="👁"
+                                  StackPane.alignment="CENTER_RIGHT"
+                                  style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                                         -fx-cursor:hand; -fx-font-size:14px; -fx-padding:0 10 0 0;"/>
+                </StackPane>
+            </VBox>
+
+            <!-- Téléphone / Sexe -->
+            <HBox spacing="15">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Téléphone" style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                    <TextField fx:id="telephoneField"
+                               style="-fx-background-color:#0f3460; -fx-text-fill:white; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:8;"/>
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="Sexe" style="-fx-text-fill:#a8a8b3; -fx-font-size:12px;"/>
+                    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 8 0 0 0;">
+                        <RadioButton fx:id="radioM" text="Masculin"
+                                     style="-fx-text-fill:white;"/>
+                        <RadioButton fx:id="radioF" text="Féminin"
+                                     style="-fx-text-fill:white;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Message erreur/succès -->
+            <Label fx:id="messageLabel" text="" wrapText="true"
+                   style="-fx-font-size:12px;"/>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Footer Boutons -->
+    <HBox spacing="12" alignment="CENTER_RIGHT"
+          style="-fx-background-color:#16213e; -fx-padding: 15 30;">
+        <Button text="Annuler" onAction="#handleAnnuler"
+                style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3; -fx-border-color:#a8a8b3; -fx-border-radius:6; -fx-padding:8 20; -fx-cursor:hand;"/>
+        <Button text="💾  Enregistrer" onAction="#handleSauvegarder"
+                style="-fx-background-color:#e94560; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:6; -fx-padding:8 20; -fx-cursor:hand;"/>
+    </HBox>
+
+</VBox>

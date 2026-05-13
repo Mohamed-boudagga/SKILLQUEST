@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.InscrireCoursController"
+      spacing="15" prefWidth="600" prefHeight="400"
+      stylesheets="@../css/style.css"
+      style="-fx-background-color: #1a1a2e; -fx-padding: 20;">
+
+    <Label text="S'inscrire à un nouveau cours" 
+           style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <Label text="Choisissez un cours adapté à votre niveau :" 
+           style="-fx-text-fill: #a8a8b3;"/>
+
+    <TableView fx:id="tableCoursDispo" VBox.vgrow="ALWAYS" 
+               style="-fx-background-color: #16213e;">
+        <columns>
+            <TableColumn fx:id="colTitre" text="Titre" prefWidth="250"/>
+            <TableColumn fx:id="colNiveau" text="Niveau" prefWidth="100"/>
+            <TableColumn fx:id="colAction" text="Action" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Fermer" onAction="#handleFermer" 
+                style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-cursor: hand;"/>
+    </HBox>
+
+</VBox>
