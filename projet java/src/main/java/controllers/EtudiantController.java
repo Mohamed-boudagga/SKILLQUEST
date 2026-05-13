@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.gestionJeux.GalaxyDefenderController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import services.ServiceBadge;
 import services.ServiceEtudiant;
 import services.ServiceProgression;
 import services.ServiceTest;
+import utils.SessionManager;
 
 import java.io.File;
 import java.net.URL;
@@ -37,10 +39,10 @@ public class EtudiantController implements Initializable {
     @FXML private FlowPane badgesPane;
     @FXML private StackPane avatarStack;
     @FXML private ImageView photoProfilView;
-    @FXML private Button btnProfil, btnCours, btnTests, btnClassement, btnJeux;
+    @FXML private Button btnProfil, btnCours, btnTests, btnClassement, btnJeux, btnExamens;
 
     // Sections
-    @FXML private VBox sectionProfil, sectionCours, sectionTests, sectionClassement, sectionJeux;
+    @FXML private VBox sectionProfil, sectionCours, sectionTests, sectionClassement, sectionJeux, sectionExamens;
 
     // Tableaux
     @FXML private TableView<ProgressionCours> tableCoursProgression;
@@ -207,22 +209,35 @@ public class EtudiantController implements Initializable {
     }
 
     @FXML
+    private void afficherExamens(ActionEvent e) {
+        setSectionsVisibility(sectionExamens);
+        updateSidebarStyles(btnExamens);
+    }
+
+    @FXML
     private void lancerQuiz(ActionEvent e) {
-        System.out.println("Lancement du Quiz...");
-        // On cherche un jeu de type QUIZ dans la base
-        App.ouvrirScene("QuizGame"); // Remplacez par le nom exact du FXML du module Jeux
+        App.ouvrirFenetreModal("QuizGame", "Quiz Java");
     }
 
     @FXML
     private void lancerCorrection(ActionEvent e) {
-        System.out.println("Lancement de Correction de Code...");
-        // App.ouvrirScene("CodeCorrection"); 
+        App.ouvrirFenetreModal("CodeCorrection", "Correction de Code");
     }
 
     @FXML
     private void lancerBattle(ActionEvent e) {
-        System.out.println("Lancement de Battle Arena...");
-        // App.ouvrirScene("BattleArena");
+        App.ouvrirFenetreModal("BattleGame", "Battle Arena");
+    }
+
+    @FXML
+    private void lancerGalaxy(ActionEvent e) {
+        GalaxyDefenderController.launch(App.getPrimaryStage());
+    }
+
+    @FXML
+    private void lancerExamens(ActionEvent e) {
+        SessionManager.getInstance().setAdmin(false);
+        App.ouvrirFenetreModal("SelectionNiveau", "Examens & Certifications");
     }
 
     // =====================================================================
@@ -307,20 +322,16 @@ public class EtudiantController implements Initializable {
     // UTILITAIRES
     // =====================================================================
     private void setSectionsVisibility(VBox activeSection) {
-        sectionProfil.setVisible(activeSection == sectionProfil);
-        sectionProfil.setManaged(activeSection == sectionProfil);
-        sectionCours.setVisible(activeSection == sectionCours);
-        sectionCours.setManaged(activeSection == sectionCours);
-        sectionTests.setVisible(activeSection == sectionTests);
-        sectionTests.setManaged(activeSection == sectionTests);
-        sectionClassement.setVisible(activeSection == sectionClassement);
-        sectionClassement.setManaged(activeSection == sectionClassement);
-        sectionJeux.setVisible(activeSection == sectionJeux);
-        sectionJeux.setManaged(activeSection == sectionJeux);
+        VBox[] sections = {sectionProfil, sectionCours, sectionTests, sectionClassement, sectionJeux, sectionExamens};
+        for (VBox s : sections) {
+            if (s == null) continue;
+            s.setVisible(s == activeSection);
+            s.setManaged(s == activeSection);
+        }
     }
 
     private void updateSidebarStyles(Button activeBtn) {
-        Button[] buttons = {btnProfil, btnCours, btnTests, btnClassement, btnJeux};
+        Button[] buttons = {btnProfil, btnCours, btnTests, btnClassement, btnJeux, btnExamens};
         for (Button b : buttons) {
             if (b == null) continue;
             if (b == activeBtn) {

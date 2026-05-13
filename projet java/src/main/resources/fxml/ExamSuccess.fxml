@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="300.0" prefWidth="450.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.ExamSuccessController"
+            style="-fx-background-color: #16213e; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #4ade80; -fx-border-width: 2;">
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/></padding>
+        <Label text="Examen Réussi !" style="-fx-text-fill: #4ade80; -fx-font-size: 28; -fx-font-weight: bold;"/>
+        <Label text="Bravo ! Continue pour décrocher ton certificat de niveau !"
+               style="-fx-text-fill: #a8a8b3; -fx-font-size: 14;"
+               textAlignment="CENTER" wrapText="true" maxWidth="350"/>
+        <Button text="CONTINUER" onAction="#closeWindow"
+                style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 10 40; -fx-background-radius: 25; -fx-cursor: hand;"/>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: #1a1a2e;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionJeux.ChatbotController">
+   <top>
+      <VBox alignment="CENTER" style="-fx-background-color: #0f3460; -fx-padding: 15;">
+         <Label text="ASSISTANT IA SKILLQUEST"
+                style="-fx-text-fill: #e94560; -fx-font-size: 18; -fx-font-weight: bold;"/>
+      </VBox>
+   </top>
+   <center>
+      <TextArea fx:id="chatArea" editable="false" wrapText="true"
+                style="-fx-control-inner-background: #16213e; -fx-text-fill: #4dff4d; -fx-font-family: 'Courier New'; -fx-font-size: 13;"/>
+   </center>
+   <bottom>
+      <HBox spacing="10.0" style="-fx-padding: 12; -fx-background-color: #16213e;">
+         <TextField fx:id="txtInput" onAction="#handleSend" HBox.hgrow="ALWAYS"
+                    promptText="Posez votre question..."
+                    style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+         <Button onAction="#handleSend" text="Envoyer"
+                 style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold;"/>
+      </HBox>
+   </bottom>
+</BorderPane>

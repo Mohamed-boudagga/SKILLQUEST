@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" prefWidth="850" prefHeight="700"
+      style="-fx-background-color: #1a1a2e; -fx-padding: 20;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.gestionJeux.CodeCorrectionManagerController">
+    <Label text="GESTION DES DÉFIS DE CODE"
+           style="-fx-text-fill: #e94560; -fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <VBox spacing="10" style="-fx-background-color: #16213e; -fx-padding: 15; -fx-background-radius: 10;">
+        <TextField fx:id="txtInstructions" promptText="Consigne (ex: Corrigez la boucle for...)"
+                   style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+        <HBox spacing="10">
+            <VBox HBox.hgrow="ALWAYS" spacing="5">
+                <Label text="Code avec Bug" style="-fx-text-fill: #e94560;"/>
+                <TextArea fx:id="txtBuggyCode" prefHeight="120"
+                          style="-fx-font-family: 'Consolas'; -fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+            </VBox>
+            <VBox HBox.hgrow="ALWAYS" spacing="5">
+                <Label text="Code Correct" style="-fx-text-fill: #4ade80;"/>
+                <TextArea fx:id="txtCorrectCode" prefHeight="120"
+                          style="-fx-font-family: 'Consolas'; -fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+            </VBox>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT">
+            <Button fx:id="btnAdd" text="AJOUTER LE DÉFI" onAction="#handleAdd"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+
+    <TableView fx:id="tableChallenges" VBox.vgrow="ALWAYS"
+               style="-fx-background-color: #16213e; -fx-border-color: #0f3460;">
+        <columns>
+            <TableColumn fx:id="colInstructions" text="CONSIGNE" prefWidth="500"/>
+            <TableColumn fx:id="colActions" text="ACTION" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="RETOUR" onAction="#handleBack"
+                style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane prefWidth="1100" prefHeight="780" style="-fx-background-color: #1a1a2e;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionJeux.CodeCorrectionController">
+    <top>
+        <HBox spacing="20" style="-fx-padding: 15 25; -fx-background-color: #16213e; -fx-border-color: #0f3460; -fx-border-width: 0 0 1 0;" alignment="CENTER_LEFT">
+            <Button text="RETOUR" onAction="#handleBack"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="CORRECTION DE CODE" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Circle fx:id="aiStatus" radius="10" fill="DODGERBLUE"/>
+            <Label fx:id="lblScore" text="SCORE: 0" style="-fx-text-fill: #fbbf24; -fx-font-size: 18; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+            <VBox spacing="15" style="-fx-padding: 25;" HBox.hgrow="ALWAYS">
+                <VBox spacing="5" style="-fx-background-color: #16213e; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #0f3460; -fx-border-width: 1; -fx-border-radius: 8;">
+                    <Label text="CONSIGNE :" style="-fx-text-fill: #fbbf24; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblInstructions" text="Chargement..." style="-fx-text-fill: white; -fx-font-size: 16;" wrapText="true"/>
+                </VBox>
+
+                <VBox spacing="5" VBox.vgrow="ALWAYS">
+                    <Label text="VOTRE CODE :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <TextArea fx:id="txtEditor" VBox.vgrow="ALWAYS"
+                              style="-fx-font-family: 'Consolas'; -fx-font-size: 14; -fx-control-inner-background: #16213e; -fx-text-fill: #4dff4d;"/>
+                </VBox>
+
+                <VBox fx:id="panelCorrection" spacing="5" visible="false" managed="false">
+                    <Label text="CORRECTION OFFICIELLE :" style="-fx-text-fill: #4ade80; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                    <TextArea fx:id="txtCorrection" editable="false" prefHeight="150"
+                              style="-fx-font-family: 'Consolas'; -fx-font-size: 13; -fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+                </VBox>
+
+                <HBox spacing="12" alignment="CENTER_RIGHT">
+                    <Button text="VOIR LA CORRECTION" onAction="#handleShowCorrection"
+                            style="-fx-background-color: #fbbf24; -fx-text-fill: #1a1a2e; -fx-font-weight: bold;"/>
+                    <Button text="RESET" onAction="#handleReset"
+                            style="-fx-background-color: transparent; -fx-text-fill: #a8a8b3; -fx-border-color: #0f3460; -fx-border-radius: 8;"/>
+                    <Button text="SOUMETTRE" onAction="#handleSubmit"
+                            style="-fx-background-color: #4ade80; -fx-text-fill: #1a1a2e; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+            <VBox prefWidth="280" spacing="15" style="-fx-background-color: #16213e; -fx-padding: 20; -fx-border-color: #0f3460; -fx-border-width: 0 0 0 1;">
+                <Label text="ASSISTANT IA" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                <Separator/>
+                <TextArea fx:id="txtAiFeedback" editable="false" wrapText="true" VBox.vgrow="ALWAYS"
+                          style="-fx-font-size: 13; -fx-control-inner-background: #1a1a2e; -fx-text-fill: white;"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

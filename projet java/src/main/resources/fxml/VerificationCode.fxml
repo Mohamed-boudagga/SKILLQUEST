@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.VerificationCodeController"
+            style="-fx-background-color: #16213e; -fx-border-color: #0f3460; -fx-border-width: 2;">
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/></padding>
+        <Label text="VÉRIFICATION DU CODE"
+               style="-fx-text-fill: #e94560; -fx-font-size: 20; -fx-font-weight: bold;"/>
+        <PasswordField fx:id="pfCode" promptText="Entrez le code..."
+                       style="-fx-background-color: #0f3460; -fx-text-fill: white;" maxWidth="250"/>
+        <Label fx:id="lbError" text=""
+               style="-fx-text-fill: #e94560; -fx-font-size: 13;"/>
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="VÉRIFIER" onAction="#verifierCode"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25;"/>
+            <Button text="Annuler" onAction="#cancel"
+                    style="-fx-background-color: transparent; -fx-text-fill: #a8a8b3; -fx-border-color: #a8a8b3; -fx-padding: 8 25;"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

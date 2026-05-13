@@ -188,6 +188,122 @@ public class MyDataBase {
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
             System.out.println("OK Table 'progression_cours' verifiee/creee.");
 
+            // ── MODULE JEUX ───────────────────────────────────────────
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `games` (" +
+                "  `id`          INT          NOT NULL AUTO_INCREMENT," +
+                "  `TypeJeux`    VARCHAR(100) NOT NULL," +
+                "  `difficulte`  VARCHAR(50)," +
+                "  `time_limit`  INT," +
+                "  `ScoreMax`    INT," +
+                "  `description` TEXT," +
+                "  PRIMARY KEY (`id`)" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'games' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `quiz_questions` (" +
+                "  `id`             INT  NOT NULL AUTO_INCREMENT," +
+                "  `game_id`        INT," +
+                "  `question_text`  TEXT NOT NULL," +
+                "  `opt1`           VARCHAR(255)," +
+                "  `opt2`           VARCHAR(255)," +
+                "  `opt3`           VARCHAR(255)," +
+                "  `correct_answer` VARCHAR(255)," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_qq_game` FOREIGN KEY (`game_id`) REFERENCES `games`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'quiz_questions' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `battle` (" +
+                "  `id`          INT          NOT NULL AUTO_INCREMENT," +
+                "  `battle_type` VARCHAR(50)  DEFAULT 'duel'," +
+                "  `status`      VARCHAR(50)  DEFAULT 'waiting'," +
+                "  `start_time`  DATETIME," +
+                "  `end_time`    DATETIME," +
+                "  `gagnant`     VARCHAR(100)," +
+                "  PRIMARY KEY (`id`)" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'battle' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `joueur` (" +
+                "  `id`        INT NOT NULL AUTO_INCREMENT," +
+                "  `battle_id` INT," +
+                "  `user_id`   INT," +
+                "  `score`     INT DEFAULT 0," +
+                "  `rank`      INT DEFAULT 0," +
+                "  `status`    VARCHAR(50) DEFAULT 'active'," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_joueur_battle` FOREIGN KEY (`battle_id`) REFERENCES `battle`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'joueur' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `code_corrections` (" +
+                "  `id`           INT  NOT NULL AUTO_INCREMENT," +
+                "  `game_id`      INT," +
+                "  `instructions` TEXT," +
+                "  `buggy_code`   TEXT," +
+                "  `correct_code` TEXT," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_cc_game` FOREIGN KEY (`game_id`) REFERENCES `games`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'code_corrections' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `partie` (" +
+                "  `id`        INT  NOT NULL AUTO_INCREMENT," +
+                "  `score`     INT," +
+                "  `datee`     DATE," +
+                "  `joueur_id` INT," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_partie_joueur` FOREIGN KEY (`joueur_id`) REFERENCES `joueur`(`id`)" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'partie' verifiee/creee.");
+
+            // ── MODULE TEST / CERTIFICATION ───────────────────────────
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `exam` (" +
+                "  `id`          INT          NOT NULL AUTO_INCREMENT," +
+                "  `titre`       VARCHAR(200) NOT NULL," +
+                "  `description` TEXT," +
+                "  `niveau`      INT          NOT NULL DEFAULT 1," +
+                "  `duree`       INT          NOT NULL DEFAULT 30," +
+                "  `score_min`   INT          NOT NULL DEFAULT 50," +
+                "  PRIMARY KEY (`id`)" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'exam' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `exam_question` (" +
+                "  `id`             INT  NOT NULL AUTO_INCREMENT," +
+                "  `exam_id`        INT  NOT NULL," +
+                "  `question_text`  TEXT NOT NULL," +
+                "  `opt1`           VARCHAR(255)," +
+                "  `opt2`           VARCHAR(255)," +
+                "  `opt3`           VARCHAR(255)," +
+                "  `opt4`           VARCHAR(255)," +
+                "  `correct_answer` VARCHAR(255)," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_eq_exam` FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'exam_question' verifiee/creee.");
+
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `certification` (" +
+                "  `id`            INT          NOT NULL AUTO_INCREMENT," +
+                "  `etudiant_id`   INT          NOT NULL," +
+                "  `exam_id`       INT          NOT NULL," +
+                "  `score`         INT          NOT NULL," +
+                "  `date_obtention` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_cert_etudiant` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant`(`id`) ON DELETE CASCADE," +
+                "  CONSTRAINT `fk_cert_exam`     FOREIGN KEY (`exam_id`)     REFERENCES `exam`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'certification' verifiee/creee.");
+
         } catch (SQLException e) {
             System.out.println("ERREUR creation tables : " + e.getMessage());
         }

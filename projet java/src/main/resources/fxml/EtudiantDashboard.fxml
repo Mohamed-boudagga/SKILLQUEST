@@ -32,6 +32,9 @@
             <Button fx:id="btnJeux" text="🎮  Jeux" onAction="#afficherJeux"
                     maxWidth="Infinity" style="-fx-background-color:transparent; -fx-text-fill:white; -fx-alignment:CENTER_LEFT; -fx-padding:12 20; -fx-cursor:hand;"/>
 
+            <Button fx:id="btnExamens" text="🎓  Examens" onAction="#afficherExamens"
+                    maxWidth="Infinity" style="-fx-background-color:transparent; -fx-text-fill:white; -fx-alignment:CENTER_LEFT; -fx-padding:12 20; -fx-cursor:hand;"/>
+
             <Region VBox.vgrow="ALWAYS"/>
 
             <Button text="🚪 Déconnexion" onAction="#handleDeconnexion"
@@ -172,48 +175,70 @@
 
             <!-- Section Jeux -->
             <VBox fx:id="sectionJeux" spacing="20" alignment="TOP_CENTER" VBox.vgrow="ALWAYS" visible="false" managed="false">
-                <Label text="CHOISISSEZ UNE CATEGORIE" style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold; -fx-padding: 20 0 40 0;"/>
-                
+                <Label text="CHOISISSEZ UN JEU" style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold; -fx-padding: 10 0 20 0;"/>
+
                 <HBox spacing="30" alignment="CENTER">
                     <!-- QUIZ Card -->
-                    <VBox spacing="15" alignment="CENTER" prefWidth="300" prefHeight="350" 
-                          style="-fx-background-color: #16213e; -fx-border-color: #8a2be2; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 30;">
-                        <Label text="QUIZ" style="-fx-text-fill: #8a2be2; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <VBox spacing="15" alignment="CENTER" prefWidth="230" prefHeight="280"
+                          style="-fx-background-color: #16213e; -fx-border-color: #8a2be2; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 20;">
+                        <Label text="QUIZ" style="-fx-text-fill: #8a2be2; -fx-font-size: 18px; -fx-font-weight: bold;"/>
                         <VBox alignment="CENTER" spacing="5">
-                            <Label text="Questions à choix multiples" style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
-                            <Label text="Testez vos connaissances Java !" style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
+                            <Label text="Questions à choix multiples" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
+                            <Label text="Testez vos connaissances Java !" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
                         </VBox>
                         <Region VBox.vgrow="ALWAYS"/>
-                        <Button text="DECOUVRIR" onAction="#lancerQuiz"
-                                style="-fx-background-color: #8a2be2; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        <Button text="JOUER" onAction="#lancerQuiz"
+                                style="-fx-background-color: #8a2be2; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
                     </VBox>
 
                     <!-- CORRECTION Card -->
-                    <VBox spacing="15" alignment="CENTER" prefWidth="300" prefHeight="350" 
-                          style="-fx-background-color: #16213e; -fx-border-color: #00ced1; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 30;">
-                        <Label text="CORRECTION DE CODE" style="-fx-text-fill: #00ced1; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <VBox spacing="15" alignment="CENTER" prefWidth="230" prefHeight="280"
+                          style="-fx-background-color: #16213e; -fx-border-color: #00ced1; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 20;">
+                        <Label text="CORRECTION CODE" style="-fx-text-fill: #00ced1; -fx-font-size: 16px; -fx-font-weight: bold;"/>
                         <VBox alignment="CENTER" spacing="5">
-                            <Label text="Corrigez des bugs Java" style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
-                            <Label text="Trouvez et corrigez les erreurs." style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
+                            <Label text="Corrigez des bugs Java" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
+                            <Label text="Trouvez et corrigez les erreurs." style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
                         </VBox>
                         <Region VBox.vgrow="ALWAYS"/>
-                        <Button text="DECOUVRIR" onAction="#lancerCorrection"
-                                style="-fx-background-color: #00ced1; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        <Button text="JOUER" onAction="#lancerCorrection"
+                                style="-fx-background-color: #00ced1; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
                     </VBox>
 
                     <!-- BATTLE Card -->
-                    <VBox spacing="15" alignment="CENTER" prefWidth="300" prefHeight="350" 
-                          style="-fx-background-color: #16213e; -fx-border-color: #ffa500; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 30;">
-                        <Label text="BATTLE ARENA" style="-fx-text-fill: #ffa500; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <VBox spacing="15" alignment="CENTER" prefWidth="230" prefHeight="280"
+                          style="-fx-background-color: #16213e; -fx-border-color: #ffa500; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 20;">
+                        <Label text="BATTLE ARENA" style="-fx-text-fill: #ffa500; -fx-font-size: 18px; -fx-font-weight: bold;"/>
                         <VBox alignment="CENTER" spacing="5">
-                            <Label text="Combat spatial" style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
-                            <Label text="Répondez aux questions pour gagner." style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;"/>
+                            <Label text="Combat spatial" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
+                            <Label text="Répondez aux questions pour gagner." style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
                         </VBox>
                         <Region VBox.vgrow="ALWAYS"/>
-                        <Button text="DECOUVRIR" onAction="#lancerBattle"
-                                style="-fx-background-color: #ffa500; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        <Button text="JOUER" onAction="#lancerBattle"
+                                style="-fx-background-color: #ffa500; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </VBox>
+
+                    <!-- GALAXY DEFENDER Card -->
+                    <VBox spacing="15" alignment="CENTER" prefWidth="230" prefHeight="280"
+                          style="-fx-background-color: #16213e; -fx-border-color: #4ade80; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 20;">
+                        <Label text="GALAXY DEFENDER" style="-fx-text-fill: #4ade80; -fx-font-size: 15px; -fx-font-weight: bold;"/>
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label text="Défenseur de la galaxie" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
+                            <Label text="Détruisez les astéroïdes !" style="-fx-text-fill: #a8a8b3; -fx-font-size: 12px;" wrapText="true" maxWidth="190"/>
+                        </VBox>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Button text="JOUER" onAction="#lancerGalaxy"
+                                style="-fx-background-color: #4ade80; -fx-text-fill: #1a1a2e; -fx-font-weight: bold; -fx-padding: 8 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
                     </VBox>
                 </HBox>
+            </VBox>
+
+            <!-- Section Examens & Certifications -->
+            <VBox fx:id="sectionExamens" spacing="30" alignment="TOP_CENTER" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <Label text="EXAMENS &amp; CERTIFICATIONS" style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold; -fx-padding: 10 0 10 0;"/>
+                <Label text="Passez des examens par niveau et décrochez vos certifications."
+                       style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;" wrapText="true" maxWidth="600"/>
+                <Button text="ACCÉDER AUX EXAMENS" onAction="#lancerExamens"
+                        style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 50; -fx-background-radius: 30; -fx-cursor: hand;"/>
             </VBox>
 
         </VBox>

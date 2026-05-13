@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.CertificatVueController"
+            style="-fx-background-color: #1a1a2e;">
+    <Button text="← RETOUR" onAction="#goHome"
+            AnchorPane.topAnchor="15.0" AnchorPane.leftAnchor="15.0"
+            style="-fx-background-color: transparent; -fx-text-fill: #e94560; -fx-font-weight: bold; -fx-border-color: #e94560; -fx-border-radius: 5; -fx-cursor: hand;"/>
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0"
+          AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0"
+          style="-fx-background-color: #16213e; -fx-border-color: #e94560; -fx-border-width: 5; -fx-padding: 50; -fx-border-radius: 15; -fx-background-radius: 15;">
+        <Label text="FÉLICITATIONS !" style="-fx-font-size: 40; -fx-font-weight: bold; -fx-text-fill: #4ade80;"/>
+        <Label text="CERTIFICAT DE RÉUSSITE"
+               style="-fx-font-size: 20; -fx-text-fill: #a8a8b3;"/>
+        <Separator maxWidth="500.0"/>
+        <Label text="Ce certificat atteste que" style="-fx-font-style: italic; -fx-font-size: 18; -fx-text-fill: #a8a8b3;"/>
+        <Label fx:id="lbStudentName" text="NOM ÉTUDIANT"
+               style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #00d4ff;"/>
+        <Label text="a réussi avec succès" style="-fx-font-size: 16; -fx-text-fill: #a8a8b3;"/>
+        <Label fx:id="lbCertTitle" text="TITRE DE CERTIFICATION"
+               style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #e94560;"/>
+        <Text fx:id="txtDescription" text="Description..."
+              wrappingWidth="600.0" textAlignment="CENTER"
+              style="-fx-font-size: 14; -fx-fill: #a8a8b3;"/>
+        <HBox alignment="CENTER" spacing="100.0">
+            <VBox alignment="CENTER">
+                <Label text="Niveau" style="-fx-text-fill: #a8a8b3;"/>
+                <Label fx:id="lbLevel" text="1"
+                       style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: #fbbf24;"/>
+            </VBox>
+            <VBox alignment="CENTER">
+                <Label text="Date" style="-fx-text-fill: #a8a8b3;"/>
+                <Label fx:id="lbDate" text="-"
+                       style="-fx-font-weight: bold; -fx-font-size: 18; -fx-text-fill: white;"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane>

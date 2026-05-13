@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefWidth="1200" prefHeight="800" style="-fx-background-color: #1a1a2e;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.gestionJeux.AdminGamesController">
+
+    <left>
+        <VBox spacing="8" prefWidth="220" style="-fx-background-color: #16213e; -fx-padding: 25 15 20 15;">
+            <Label text="SkillQuest" style="-fx-text-fill: #e94560; -fx-font-size: 22; -fx-font-weight: bold; -fx-padding: 0 0 10 5;"/>
+            <Label text="ADMIN JEUX" style="-fx-text-fill: #a8a8b3; -fx-font-size: 11; -fx-padding: 0 0 8 5;"/>
+            <Separator/>
+            <VBox spacing="4" style="-fx-padding: 12 0 0 0;">
+                <Button text="Jeux" maxWidth="Infinity" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-font-size: 14; -fx-padding: 10 8; -fx-background-radius: 8;"/>
+            </VBox>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Fermer" onAction="#handleLogout" maxWidth="Infinity" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 13;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane style="-fx-background-color: #1a1a2e;">
+            <VBox spacing="20" style="-fx-padding: 30 35;">
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <Label text="Gestion des Jeux" style="-fx-text-fill: white; -fx-font-size: 30; -fx-font-weight: bold;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ Ajouter" onAction="#handleNavAdd" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 15; -fx-padding: 10 25;"/>
+                </HBox>
+
+                <HBox style="-fx-background-color: #16213e; -fx-background-radius: 25; -fx-padding: 4 15; -fx-border-radius: 25; -fx-border-color: #0f3460; -fx-border-width: 1;" prefWidth="400" maxWidth="400">
+                    <Label text="🔍" style="-fx-text-fill: #a8a8b3; -fx-font-size: 14; -fx-padding: 5 8 5 0;"/>
+                    <TextField fx:id="txtSearchId" promptText="Rechercher..." HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: white;"/>
+                </HBox>
+
+                <TableView fx:id="tableGames" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableClick"
+                           style="-fx-background-color: #16213e; -fx-border-color: #0f3460;">
+                    <columns>
+                        <TableColumn fx:id="colType" text="TYPE DE JEU" prefWidth="280"/>
+                        <TableColumn fx:id="colDifficulty" text="DIFFICULTÉ" prefWidth="150"/>
+                        <TableColumn fx:id="colTime" text="TEMPS (s)" prefWidth="130"/>
+                        <TableColumn fx:id="colScore" text="SCORE MAX" prefWidth="130"/>
+                        <TableColumn fx:id="colActions" text="ACTIONS" prefWidth="200"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <Pane fx:id="overlay" visible="false" style="-fx-background-color: rgba(0,0,0,0.65);" onMouseClicked="#handleCancel"/>
+
+            <HBox fx:id="sidePanel" visible="false" alignment="CENTER_RIGHT">
+                <Region HBox.hgrow="ALWAYS" onMouseClicked="#handleCancel"/>
+                <VBox prefWidth="420" spacing="16" style="-fx-background-color: #16213e; -fx-padding: 30; -fx-border-color: #0f3460; -fx-border-width: 0 0 0 2;">
+                    <Label fx:id="lblFormTitle" text="Nouveau Jeu" style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <TextField fx:id="txtId" visible="false" managed="false"/>
+                    <VBox spacing="5">
+                        <Label text="Type de Jeu :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+                        <TextField fx:id="txtType" promptText="Ex: Quiz Java, Correction Code..."
+                                   style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Label text="Difficulté :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+                        <HBox spacing="15">
+                            <fx:define><ToggleGroup fx:id="difficultyGroup"/></fx:define>
+                            <RadioButton fx:id="rbFacile" text="Facile" toggleGroup="$difficultyGroup" style="-fx-text-fill: #4ade80;"/>
+                            <RadioButton fx:id="rbMoyen" text="Moyen" toggleGroup="$difficultyGroup" style="-fx-text-fill: #fbbf24;"/>
+                            <RadioButton fx:id="rbDifficile" text="Difficile" toggleGroup="$difficultyGroup" style="-fx-text-fill: #e94560;"/>
+                        </HBox>
+                    </VBox>
+                    <HBox spacing="12">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Temps (sec) :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+                            <TextField fx:id="txtTime" promptText="Ex: 30" style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Score Max :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+                            <TextField fx:id="txtScore" promptText="Ex: 1000" style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+                        </VBox>
+                    </HBox>
+                    <VBox spacing="5">
+                        <Label text="Description :" style="-fx-text-fill: #a8a8b3; -fx-font-size: 13;"/>
+                        <TextArea fx:id="txtDescription" prefHeight="90" wrapText="true"
+                                  style="-fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+                    </VBox>
+                    <Button fx:id="btnManageQuestions" text="CONFIGURER LE CONTENU" maxWidth="Infinity"
+                            onAction="#handleManageQuestions"
+                            style="-fx-background-color: #0f3460; -fx-text-fill: white;" visible="false"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="10">
+                        <Button text="ANNULER" onAction="#handleCancel" prefWidth="150"
+                                style="-fx-background-color: transparent; -fx-text-fill: #a8a8b3; -fx-border-color: #0f3460; -fx-border-radius: 8; -fx-padding: 9 20;"/>
+                        <Button fx:id="btnSave" text="ENREGISTRER" onAction="#handleSave" prefWidth="220"
+                                style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </StackPane>
+    </center>
+</BorderPane>

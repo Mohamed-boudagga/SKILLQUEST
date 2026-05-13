@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.GestionQuestionsController"
+            style="-fx-background-color: #1a1a2e;">
+    <SplitPane dividerPositions="0.4"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox spacing="10.0" style="-fx-background-color: #16213e; -fx-padding: 15;">
+            <Button text="← Fermer" onAction="#fermerFenetre"
+                    style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+            <Label text="Ajouter / Modifier Question"
+                   style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Separator/>
+            <Label text="Texte de la question" style="-fx-text-fill: #a8a8b3;"/>
+            <TextArea fx:id="taQuestion" prefHeight="80.0" wrapText="true"
+                      style="-fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+            <Label text="Options (une par ligne - 4 max)" style="-fx-text-fill: #a8a8b3;"/>
+            <TextArea fx:id="taOptions" prefHeight="100.0" promptText="Option 1&#10;Option 2&#10;Option 3&#10;Option 4"
+                      style="-fx-control-inner-background: #0f3460; -fx-text-fill: white;"/>
+            <Label text="Index de la bonne réponse (0-3)" style="-fx-text-fill: #a8a8b3;"/>
+            <TextField fx:id="tfCorrectIndex" promptText="Ex: 0"
+                       style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+            <Label text="Points" style="-fx-text-fill: #a8a8b3;"/>
+            <TextField fx:id="tfPoints" text="25"
+                       style="-fx-background-color: #0f3460; -fx-text-fill: white;"/>
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button text="Ajouter" onAction="#ajouterQuestion" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #4ade80; -fx-text-fill: #1a1a2e; -fx-font-weight: bold;"/>
+                <Button text="Modifier" onAction="#modifierQuestion" maxWidth="Infinity" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+            <Button text="Supprimer" onAction="#supprimerQuestion" maxWidth="Infinity"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <Button text="Vider" onAction="#clearFields" maxWidth="Infinity"
+                    style="-fx-background-color: #a8a8b3; -fx-text-fill: #1a1a2e;"/>
+        </VBox>
+        <VBox spacing="10.0" style="-fx-background-color: #1a1a2e; -fx-padding: 10;">
+            <Label fx:id="lbExamTitle" text="Questions pour l'examen"
+                   style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <TableView fx:id="tvQuestions" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableSelection"
+                       style="-fx-background-color: #16213e;">
+                <columns>
+                    <TableColumn fx:id="colText" text="Question" prefWidth="300"/>
+                    <TableColumn fx:id="colCorrect" text="Index Correct" prefWidth="80"/>
+                    <TableColumn fx:id="colPoints" text="Points" prefWidth="60"/>
+                </columns>
+            </TableView>
+            <Label fx:id="lbStatus" text="Prêt" style="-fx-text-fill: #a8a8b3;"/>
+        </VBox>
+    </SplitPane>
+</AnchorPane>
