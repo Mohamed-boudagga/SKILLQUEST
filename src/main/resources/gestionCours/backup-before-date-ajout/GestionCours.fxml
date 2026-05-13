@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="tn.esprit.controllers.gestionCours.GestionCoursController"
+            stylesheets="@style.css"
+            styleClass="app-root">
+
+    <left>
+        <VBox prefWidth="230" spacing="18" styleClass="sidebar">
+            <padding>
+                <Insets top="32" right="22" bottom="24" left="22"/>
+            </padding>
+
+            <Label text="SkillQuest" styleClass="brand-title"/>
+            <Label text="ADMIN" styleClass="sidebar-role"/>
+
+            <VBox spacing="10" styleClass="nav-list">
+                <Button text="Etudiants" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Cours" maxWidth="Infinity" styleClass="nav-button-active"/>
+                <Button text="Tests" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Certificats" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Jeux" maxWidth="Infinity" styleClass="nav-button"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Deconnexion" maxWidth="Infinity" styleClass="logout-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" styleClass="content">
+            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="page-header">
+                <Label text="Gestion des Cours" styleClass="page-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ Ajouter"
+                        onAction="#goToAddCours"
+                        styleClass="btn-add"/>
+            </HBox>
+
+            <TextField fx:id="txtSearch" promptText="Rechercher..." styleClass="search-input"/>
+
+            <TableView fx:id="tableCours" VBox.vgrow="ALWAYS" styleClass="table">
+                <columns>
+                    <TableColumn fx:id="colTitre" text="Titre" prefWidth="170"/>
+                    <TableColumn fx:id="colDescription" text="Description" prefWidth="250"/>
+                    <TableColumn fx:id="colContenue" text="Contenue" prefWidth="240"/>
+                    <TableColumn fx:id="colNiveau" text="Niveau requis" prefWidth="120"/>
+                    <TableColumn fx:id="colIdAjouteur" text="Id Ajouteur" prefWidth="120"/>
+                    <TableColumn fx:id="colAction" text="Actions" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

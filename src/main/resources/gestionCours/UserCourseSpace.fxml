@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.gestionCours.UserCourseSpaceController"
+            stylesheets="@userCourseSpace.css"
+            styleClass="user-root">
+
+    <left>
+        <VBox prefWidth="210" spacing="18" styleClass="user-sidebar">
+            <padding>
+                <Insets top="28" right="16" bottom="20" left="16"/>
+            </padding>
+
+            <Label text="SkillQuest" styleClass="user-brand"/>
+            <Label text="Bonjour, Sarra !" styleClass="user-greeting"/>
+
+            <VBox spacing="10" styleClass="user-nav-list">
+                <Button text="Mon Profil" maxWidth="Infinity" styleClass="user-nav-button"/>
+                <Button text="Mes Cours" maxWidth="Infinity" styleClass="user-nav-active"/>
+                <Button text="Tests" maxWidth="Infinity" styleClass="user-nav-button"/>
+                <Button text="Jeux" maxWidth="Infinity" styleClass="user-nav-button"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Deconnexion" maxWidth="Infinity" styleClass="user-logout"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" styleClass="user-content">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="Espace Cours" styleClass="user-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="Mon niveau" styleClass="level-label"/>
+                <ComboBox fx:id="comboLevel" prefWidth="76" styleClass="user-combo"/>
+                <Button text="+ Uploader cours" onAction="#uploadCourse" styleClass="upload-button"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="comboFieldFilter" prefWidth="150" styleClass="user-combo"/>
+                <ComboBox fx:id="comboOwnerFilter" prefWidth="185" styleClass="user-combo"/>
+                <TextField fx:id="txtSearch" promptText="Rechercher..." HBox.hgrow="ALWAYS" styleClass="user-search"/>
+                <ComboBox fx:id="comboSort" prefWidth="180" styleClass="user-combo"/>
+                <Button text="Reset" onAction="#resetFilters" styleClass="user-reset"/>
+            </HBox>
+
+            <Label fx:id="lblStatus" text="0 cours affiches" styleClass="user-status"/>
+
+            <ScrollPane fitToWidth="true" styleClass="user-scroll">
+                <FlowPane fx:id="courseGrid" hgap="38" vgap="34" prefWrapLength="650" styleClass="course-grid">
+                    <padding>
+                        <Insets top="12" right="0" bottom="24" left="0"/>
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

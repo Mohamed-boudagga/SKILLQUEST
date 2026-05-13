@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.gestionCours.UpdateCours"
+            stylesheets="@style.css"
+            styleClass="app-root">
+
+    <left>
+        <VBox prefWidth="230" spacing="18" styleClass="sidebar">
+            <padding>
+                <Insets top="32" right="22" bottom="24" left="22"/>
+            </padding>
+
+            <Label text="SkillQuest" styleClass="brand-title"/>
+            <Label text="ADMIN" styleClass="sidebar-role"/>
+
+            <VBox spacing="10" styleClass="nav-list">
+                <Button text="Etudiants" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Cours" maxWidth="Infinity" styleClass="nav-button-active"/>
+                <Button text="Tests" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Certificats" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Jeux" maxWidth="Infinity" styleClass="nav-button"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Deconnexion" maxWidth="Infinity" styleClass="logout-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" styleClass="content">
+            <Label text="Modifier un Cours" styleClass="page-title"/>
+
+            <VBox spacing="14" maxWidth="620" styleClass="form-panel">
+                <TextField fx:id="txtTitre" promptText="Titre du cours" styleClass="form-input"/>
+                <TextArea fx:id="txtDescription" promptText="Description du cours" prefHeight="150" styleClass="form-input"/>
+                <TextArea fx:id="txtContenue" promptText="Fichiers, URL videos, documents..." prefHeight="120" styleClass="form-input"/>
+                <ComboBox fx:id="comboNiveau" promptText="Niveau entre 0 et 6" maxWidth="Infinity" styleClass="form-input"/>
+
+                <Label fx:id="lblError" styleClass="error-label"/>
+
+                <HBox spacing="12" alignment="CENTER_RIGHT">
+                    <Button text="Annuler" onAction="#annuler" styleClass="secondary-button"/>
+                    <Button text="Modifier" onAction="#updateCours" styleClass="btn-add"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

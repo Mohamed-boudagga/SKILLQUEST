@@ -1,0 +1,192 @@
+.app-root {
+    -fx-background-color: linear-gradient(to bottom right, #101522, #171d2b 55%, #21191f);
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+.sidebar {
+    -fx-background-color: rgba(11, 16, 28, 0.96);
+    -fx-border-color: transparent rgba(255, 255, 255, 0.07) transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.brand-title {
+    -fx-text-fill: #ff4d57;
+    -fx-font-size: 27px;
+    -fx-font-weight: 800;
+}
+
+.user-greeting {
+    -fx-text-fill: #b7becb;
+    -fx-font-size: 14px;
+}
+
+.nav-list {
+    -fx-padding: 22 0 0 0;
+}
+
+.nav-button,
+.nav-button-active,
+.logout-button,
+.secondary-button,
+.btn-add,
+.btn-update,
+.btn-delete {
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 12 16;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b4bcc9;
+    -fx-alignment: center-left;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: #ff4d57;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-effect: dropshadow(gaussian, rgba(255, 77, 87, 0.35), 18, 0.15, 0, 7);
+}
+
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #ff646b;
+    -fx-text-fill: #ff8a90;
+}
+
+.logout-button:hover {
+    -fx-background-color: rgba(255, 77, 87, 0.12);
+}
+
+.content {
+    -fx-padding: 44 36 32 36;
+}
+
+.page-header {
+    -fx-padding: 0 0 4 0;
+}
+
+.page-title {
+    -fx-text-fill: #f4efe7;
+    -fx-font-size: 27px;
+    -fx-font-weight: 800;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.15, 0, 2);
+}
+
+.table {
+    -fx-background-color: #f6f2ea;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-color: rgba(255, 255, 255, 0.22);
+    -fx-border-width: 1;
+}
+
+.table .column-header-background {
+    -fx-background-color: #ded9cf;
+}
+
+.table .column-header,
+.table .filler {
+    -fx-size: 42px;
+    -fx-background-color: transparent;
+    -fx-border-color: #c8c1b6;
+}
+
+.table .column-header .label {
+    -fx-text-fill: #423f3a;
+    -fx-font-weight: 800;
+}
+
+.table-row-cell {
+    -fx-background-color: #f6f2ea;
+    -fx-border-color: transparent transparent #ded8cd transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #eee9df;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #23a6b8;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: white;
+}
+
+.pagination {
+    -fx-page-information-visible: false;
+}
+
+.form-panel {
+    -fx-background-color: #f6f2ea;
+    -fx-background-radius: 6;
+    -fx-padding: 26;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.24), 20, 0.18, 0, 8);
+}
+
+.form-input {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-border-color: #d6d0c6;
+    -fx-border-radius: 6;
+    -fx-padding: 10 12;
+    -fx-font-size: 14px;
+}
+
+.form-input:focused {
+    -fx-border-color: #23a6b8;
+    -fx-border-width: 2;
+}
+
+.error-label {
+    -fx-text-fill: #d63031;
+    -fx-font-weight: 700;
+}
+
+.btn-add {
+    -fx-background-color: #ff4d57;
+    -fx-text-fill: white;
+}
+
+.btn-add:hover {
+    -fx-background-color: #e83d48;
+}
+
+.secondary-button {
+    -fx-background-color: #e4dfd5;
+    -fx-text-fill: #393630;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #d7d0c4;
+}
+
+.btn-update {
+    -fx-background-color: #23a6b8;
+    -fx-text-fill: white;
+    -fx-padding: 8 12;
+}
+
+.btn-update:hover {
+    -fx-background-color: #1c8fa0;
+}
+
+.btn-delete {
+    -fx-background-color: #ff4d57;
+    -fx-text-fill: white;
+    -fx-padding: 8 12;
+}
+
+.btn-delete:hover {
+    -fx-background-color: #e83d48;
+}

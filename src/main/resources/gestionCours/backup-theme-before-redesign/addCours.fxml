@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="tn.esprit.controllers.gestionCours.AddCoursController"
+      spacing="15"
+      alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Ajouter un cours" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- TITRE -->
+    <TextField fx:id="txtTitre" promptText="Titre du cours"/>
+
+    <!-- DESCRIPTION -->
+    <TextArea fx:id="txtDescription" promptText="Description du cours" prefHeight="100"/>
+
+    <!-- NIVEAU -->
+    <ComboBox fx:id="comboNiveau" promptText="Choisir niveau"/>
+
+    <!-- MESSAGE ERREUR -->
+    <Label fx:id="lblError" style="-fx-text-fill: red;"/>
+
+    <!-- BOUTONS -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Ajouter" onAction="#ajouterCours" styleClass="btn-add"/>
+        <Button text="Annuler" onAction="#annuler"/>
+    </HBox>
+
+</VBox>

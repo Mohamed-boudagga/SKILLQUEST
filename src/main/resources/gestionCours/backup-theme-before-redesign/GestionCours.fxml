@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.gestionCours.GestionCoursController"
+      spacing="15"
+      stylesheets="@style.css"
+      styleClass="root">
+
+    <!-- HEADER -->
+    <HBox spacing="10" styleClass="header">
+
+        <Button text="Ajouter cours"
+                onAction="#goToAddCours"
+                styleClass="btn-add"/>
+
+    </HBox>
+
+    <!-- TABLE -->
+    <TableView fx:id="tableCours" VBox.vgrow="ALWAYS" styleClass="table">
+
+        <columns>
+            <TableColumn fx:id="colTitre" text="Titre"/>
+            <TableColumn fx:id="colDescription" text="Description"/>
+            <TableColumn fx:id="colNiveau" text="Niveau"/>
+            <TableColumn fx:id="coldateDeCreation" text="Date de creation"/>
+
+            <TableColumn fx:id="colAction" text="Action"/>
+        </columns>
+
+    </TableView>
+
+    <!-- PAGINATION -->
+    <Pagination fx:id="pagination"/>
+
+</VBox>

@@ -1,0 +1,178 @@
+.user-root {
+    -fx-background-color: #111827;
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+.user-sidebar {
+    -fx-background-color: #0b1220;
+    -fx-border-color: transparent rgba(255, 255, 255, 0.08) transparent transparent;
+}
+
+.user-brand {
+    -fx-text-fill: #ff4d57;
+    -fx-font-size: 25px;
+    -fx-font-weight: 800;
+}
+
+.user-greeting,
+.level-label,
+.user-status {
+    -fx-text-fill: #b7c0cf;
+    -fx-font-size: 13px;
+}
+
+.user-nav-list {
+    -fx-padding: 18 0 0 0;
+}
+
+.user-nav-button,
+.user-nav-active,
+.user-logout,
+.upload-button,
+.user-reset,
+.resource-button,
+.locked-button {
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-font-weight: 700;
+    -fx-padding: 12 14;
+}
+
+.user-nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b9c1cf;
+    -fx-alignment: center-left;
+}
+
+.user-nav-active,
+.upload-button {
+    -fx-background-color: #ff4d57;
+    -fx-text-fill: white;
+}
+
+.user-logout {
+    -fx-background-color: transparent;
+    -fx-border-color: #ff646b;
+    -fx-text-fill: #ff8a90;
+}
+
+.user-content {
+    -fx-padding: 24 28 28 28;
+}
+
+.user-title {
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 27px;
+    -fx-font-weight: 800;
+}
+
+.user-search,
+.user-combo {
+    -fx-background-color: #121c2f;
+    -fx-background-radius: 7;
+    -fx-border-color: #39465f;
+    -fx-border-radius: 7;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #9aa4b5;
+    -fx-padding: 9 12;
+}
+
+.user-combo .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.user-combo .combo-box-popup .list-view,
+.user-combo .combo-box-popup .list-cell {
+    -fx-background-color: #121c2f;
+    -fx-text-fill: white;
+}
+
+.user-reset {
+    -fx-background-color: #e7e2d7;
+    -fx-text-fill: #151515;
+}
+
+.user-scroll {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.course-grid {
+    -fx-background-color: transparent;
+}
+
+.user-course-card,
+.user-course-card-locked {
+    -fx-pref-width: 280;
+    -fx-min-height: 172;
+    -fx-background-radius: 22;
+    -fx-padding: 18;
+}
+
+.user-course-card {
+    -fx-background-color: #a7a7a5;
+}
+
+.user-course-card-locked {
+    -fx-background-color: #5f6673;
+    -fx-opacity: 0.72;
+}
+
+.user-card-title {
+    -fx-text-fill: #111111;
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+}
+
+.user-card-level,
+.user-card-owner,
+.user-card-description {
+    -fx-text-fill: #141414;
+    -fx-font-size: 13px;
+}
+
+.resource-button {
+    -fx-background-color: #111827;
+    -fx-text-fill: white;
+}
+
+.locked-button {
+    -fx-background-color: #353b46;
+    -fx-text-fill: #cbd5e1;
+}
+
+.resource-panel {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+.content-reader {
+    -fx-background-color: rgba(255, 255, 255, 0.22);
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+}
+
+.content-reader-area {
+    -fx-background-color: rgba(255, 255, 255, 0.75);
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+    -fx-font-size: 12px;
+}
+
+.resource-row-user {
+    -fx-alignment: center-left;
+}
+
+.resource-row-icon {
+    -fx-text-fill: #111827;
+    -fx-font-weight: 800;
+}
+
+.resource-row-text {
+    -fx-text-fill: #111111;
+    -fx-font-size: 12px;
+}

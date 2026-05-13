@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.gestionCours.AddCoursController"
+            stylesheets="@style.css"
+            styleClass="app-root">
+
+    <left>
+        <VBox prefWidth="230" spacing="18" styleClass="sidebar">
+            <padding>
+                <Insets top="32" right="22" bottom="24" left="22"/>
+            </padding>
+
+            <Label text="SkillQuest" styleClass="brand-title"/>
+            <Label text="Bonjour, Sarra !" styleClass="user-greeting"/>
+
+            <VBox spacing="10" styleClass="nav-list">
+                <Button text="Mon Profil" maxWidth="Infinity" styleClass="nav-button"/>
+                <Button text="Mes Cours" maxWidth="Infinity" styleClass="nav-button-active"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Deconnexion" maxWidth="Infinity" styleClass="logout-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" styleClass="content">
+            <Label text="Ajouter un cours" styleClass="page-title"/>
+
+            <VBox spacing="14" maxWidth="620" styleClass="form-panel">
+                <TextField fx:id="txtTitre" promptText="Titre du cours" styleClass="form-input"/>
+                <TextArea fx:id="txtDescription" promptText="Description du cours" prefHeight="150" styleClass="form-input"/>
+                <ComboBox fx:id="comboNiveau" promptText="Choisir niveau" maxWidth="Infinity" styleClass="form-input"/>
+
+                <Label fx:id="lblError" styleClass="error-label"/>
+
+                <HBox spacing="12" alignment="CENTER_RIGHT">
+                    <Button text="Annuler" onAction="#annuler" styleClass="secondary-button"/>
+                    <Button text="Ajouter" onAction="#ajouterCours" styleClass="btn-add"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
