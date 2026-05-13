@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controllers.ExamSuccessController" 
+            style="-fx-background-color: #1a1a4a; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #CE93D8; -fx-border-width: 2;">
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label text="✨ Examen Réussi ! ✨" style="-fx-text-fill: #CE93D8; -fx-font-size: 28; -fx-font-weight: bold;" />
+                
+                <VBox alignment="CENTER" spacing="10.0">
+                    <children>
+                        <Label text="Bravo !" style="-fx-text-fill: white; -fx-font-size: 20;" />
+                        <Label text="Tu as validé cet examen avec brio. Continue ainsi pour décrocher ton certificat de niveau !" 
+                               style="-fx-text-fill: #bdc3c7; -fx-font-size: 14;" 
+                               textAlignment="CENTER" wrapText="true" maxWidth="350" />
+                    </children>
+                </VBox>
+                
+                <Button text="CONTINUER" onAction="#closeWindow" 
+                        style="-fx-background-color: linear-gradient(to right, #9C27B0, #673AB7); -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 10 40; -fx-background-radius: 25; -fx-cursor: hand;" />
+            </children>
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

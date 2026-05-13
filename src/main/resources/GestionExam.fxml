@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.GestionExamController"
+            style="-fx-background-color: #f4f4f9;">
+    <children>
+        <SplitPane dividerPositions="0.35" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <!-- Formulaire (Gauche) -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-padding: 20;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Button text="← RETOUR" onAction="#retourSelection" style="-fx-background-color: transparent; -fx-text-fill: #34495e; -fx-font-weight: bold; -fx-border-color: #34495e; -fx-border-radius: 5; -fx-cursor: hand;" />
+                    </HBox>
+                    <Label text="Gestion des Examens" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                    <Separator />
+                    
+                    <Label text="Nom de l'examen" />
+                    <TextField fx:id="tfNom" promptText="Ex: Java Basics" />
+
+                    <Label text="Niveau" />
+                    <TextField fx:id="tfLevel" promptText="Ex: 1" />
+
+                    <Label text="Durée (minutes)" />
+                    <TextField fx:id="tfDuree" promptText="Ex: 60" />
+
+                    <Separator />
+                    
+                    <Button fx:id="btnGererQuestions" text="Gérer les questions" onAction="#ouvrirGererQuestions" 
+                            maxWidth="Infinity" style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-font-weight: bold;" 
+                            visible="false" />
+
+                    <VBox spacing="10.0" alignment="CENTER">
+                        <Button text="Ajouter" onAction="#ajouterExam" maxWidth="Infinity" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" />
+                        <HBox spacing="10.0">
+                            <Button text="Modifier" onAction="#modifierExam" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold;" />
+                            <Button text="Supprimer" onAction="#supprimerExam" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold;" />
+                        </HBox>
+                        <Button text="Vider les champs" onAction="#clearFields" maxWidth="Infinity" />
+                    </VBox>
+                </VBox>
+
+                <!-- Liste (Droite) -->
+                <VBox spacing="10.0" style="-fx-padding: 10;">
+                    <Label text="Liste des Examens" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+                    <TableView fx:id="tvExams" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableSelection">
+                        <columns>
+                            <TableColumn fx:id="colNom" text="Nom" prefWidth="250" />
+                            <TableColumn fx:id="colLevel" text="Niveau" prefWidth="100" />
+                            <TableColumn fx:id="colDuree" text="Durée (min)" prefWidth="100" />
+                        </columns>
+                    </TableView>
+                    <Label fx:id="lbStatus" text="Prêt" style="-fx-text-fill: gray;" />
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controllers.AdminDashboardController" style="-fx-background-color: #0d0d2b;">
+    <children>
+        <VBox alignment="CENTER" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label text="TABLEAU DE BORD ADMINISTRATEUR" style="-fx-text-fill: #00ffff; -fx-font-size: 28; -fx-font-weight: bold;" />
+                
+                <GridPane alignment="CENTER" hgap="30.0" vgap="30.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" />
+                        <ColumnConstraints halignment="CENTER" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints valignment="CENTER" />
+                    </rowConstraints>
+                    <children>
+                        <!-- Gestion Examens -->
+                        <VBox alignment="CENTER" spacing="15.0" onMouseClicked="#ouvrirGestionExam" 
+                              style="-fx-background-color: #1a1a4a; -fx-border-color: #27ae60; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" prefWidth="250">
+                            <children>
+                                <Label text="📝" style="-fx-font-size: 40;" />
+                                <Label text="GESTION EXAMENS" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                            </children>
+                        </VBox>
+                        
+                        <!-- Gestion Certifications -->
+                        <VBox alignment="CENTER" spacing="15.0" onMouseClicked="#ouvrirGestionCert" 
+                              GridPane.columnIndex="1" style="-fx-background-color: #1a1a4a; -fx-border-color: #e67e22; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" prefWidth="250">
+                            <children>
+                                <Label text="📜" style="-fx-font-size: 40;" />
+                                <Label text="GESTION CERTIFICATIONS" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </GridPane>
+                
+                <Button text="VOIR VUE ÉTUDIANT (ADMIN)" onAction="#ouvrirVueEtudiant" 
+                        style="-fx-background-color: #ff00ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 10; -fx-cursor: hand;" />
+                
+                <Button text="DÉCONNEXION" onAction="#deconnexion" 
+                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-cursor: hand;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

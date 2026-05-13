@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.SelectionNiveauController"
+            style="-fx-background-color: #0d0d2b;">
+    <children>
+        <VBox alignment="CENTER" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets top="40" bottom="40" left="40" right="40"/>
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <Button text="← DÉCONNEXION" onAction="#retourLogin" 
+                            style="-fx-background-color: transparent; -fx-text-fill: #00ffff; -fx-font-weight: bold; -fx-border-color: #00ffff; -fx-border-radius: 5; -fx-cursor: hand;" />
+                </HBox>
+                
+                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                    <content>
+                        <FlowPane fx:id="fpNiveaux" hgap="30.0" vgap="30.0" alignment="CENTER">
+                            <!-- Les cartes de niveau seront générées ici par le contrôleur -->
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

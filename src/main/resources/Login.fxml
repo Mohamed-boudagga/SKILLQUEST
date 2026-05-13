@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controllers.LoginController" style="-fx-background-color: #050515;">
+    <children>
+        <VBox alignment="CENTER" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Logo SkillQuest -->
+                <VBox alignment="CENTER" spacing="5.0">
+                    <Label text="BIENVENUE SUR" style="-fx-text-fill: #8e8e93; -fx-font-size: 14; -fx-letter-spacing: 5;" />
+                    <HBox alignment="CENTER">
+                        <children>
+                            <Label text="Skill" style="-fx-text-fill: white; -fx-font-size: 56; -fx-font-weight: bold;" />
+                            <Label text="Quest" style="-fx-text-fill: #00ffff; -fx-font-size: 56; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, #00ffff, 15, 0, 0, 0);" />
+                        </children>
+                    </HBox>
+                    <Separator maxWidth="200" style="-fx-opacity: 0.3;" />
+                </VBox>
+                
+                <HBox alignment="CENTER" spacing="50.0">
+                    <children>
+                        <!-- Carte Etudiant -->
+                        <VBox fx:id="cardEtudiant" alignment="CENTER" spacing="25.0" onMouseClicked="#versEtudiant" 
+                              style="-fx-background-color: rgba(26, 26, 74, 0.6); -fx-border-color: #ff00ff; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-radius: 25; -fx-padding: 45; -fx-cursor: hand;"
+                              onMouseEntered="#handleHoverIn" onMouseExited="#handleHoverOut">
+                            <children>
+                                <Label text="🎓" style="-fx-font-size: 70; -fx-effect: dropshadow(three-pass-box, #ff00ff, 10, 0, 0, 0);" />
+                                <VBox alignment="CENTER" spacing="5">
+                                    <Label text="ÉTUDIANT" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
+                                    <Label text="Démarrez votre aventure" style="-fx-text-fill: #bdc3c7; -fx-font-size: 13;" />
+                                </VBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Carte Admin -->
+                        <VBox fx:id="cardAdmin" alignment="CENTER" spacing="25.0" onMouseClicked="#versAdmin" 
+                              style="-fx-background-color: rgba(26, 26, 74, 0.6); -fx-border-color: #00ffff; -fx-border-width: 2; -fx-border-radius: 25; -fx-background-radius: 25; -fx-padding: 45; -fx-cursor: hand;"
+                              onMouseEntered="#handleHoverIn" onMouseExited="#handleHoverOut">
+                            <children>
+                                <Label text="🛠️" style="-fx-font-size: 70; -fx-effect: dropshadow(three-pass-box, #00ffff, 10, 0, 0, 0);" />
+                                <VBox alignment="CENTER" spacing="5">
+                                    <Label text="ADMINISTRATEUR" style="-fx-text-fill: white; -fx-font-size: 22; -fx-font-weight: bold;" />
+                                    <Label text="Gérez l'univers SkillQuest" style="-fx-text-fill: #bdc3c7; -fx-font-size: 13;" />
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                
+                <Label text="v1.2 - Powered by Gaming Engine" style="-fx-text-fill: #444; -fx-font-size: 11;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

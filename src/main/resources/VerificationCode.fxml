@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.VerificationCodeController"
+            style="-fx-background-color: #1a1a2e;">
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0"
+              style="-fx-background-color: #16213e; -fx-padding: 30; -fx-background-radius: 15;">
+            <children>
+                <Label text="VÉRIFICATION DU SUCCÈS" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #00ffff;" />
+                
+                <Label text="Veuillez entrer le code de réussite obtenu à la fin de votre quiz Google Forms :" 
+                       textAlignment="CENTER" wrapText="true" style="-fx-text-fill: white;" />
+                
+                <PasswordField fx:id="pfCode" promptText="Code Secret" maxWidth="250.0" 
+                               style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-border-color: #00ffff;" />
+                
+                <Label fx:id="lbError" text="" style="-fx-text-fill: #e94560;" />
+
+                <HBox spacing="10.0" alignment="CENTER">
+                    <Button text="VÉRIFIER" onAction="#verifierCode" 
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                    <Button text="Annuler" onAction="#cancel" 
+                            style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-padding: 10 20;" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

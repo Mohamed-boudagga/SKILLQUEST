@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ListeExamensNiveauController"
+            style="-fx-background-color: #0d0d2b;">
+    <children>
+        <VBox spacing="20" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button text="← RETOUR" onAction="#retourMenu" 
+                        style="-fx-background-color: transparent; -fx-text-fill: #00ffff; -fx-font-weight: bold; -fx-border-color: #00ffff; -fx-border-radius: 5; -fx-cursor: hand;" />
+                <Label fx:id="lbTitle" text="EXAMENS DISPONIBLES" 
+                       style="-fx-text-fill: #ff00ff; -fx-font-size: 28; -fx-font-weight: bold;" />
+            </HBox>
+            
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                <FlowPane fx:id="fpExamens" hgap="20" vgap="20" alignment="CENTER" prefWrapLength="750">
+                    <padding>
+                        <Insets top="20" bottom="20" left="10" right="10" />
+                    </padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </children>
+</AnchorPane>

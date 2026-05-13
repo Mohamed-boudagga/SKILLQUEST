@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.GestionCertificationController"
+            style="-fx-background-color: #f4f4f9;">
+    <children>
+        <SplitPane dividerPositions="0.35" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <!-- Formulaire (Gauche) -->
+                <VBox spacing="15.0" style="-fx-background-color: white; -fx-padding: 20;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Button text="← RETOUR" onAction="#retourSelection" style="-fx-background-color: transparent; -fx-text-fill: #34495e; -fx-font-weight: bold; -fx-border-color: #34495e; -fx-border-radius: 5; -fx-cursor: hand;" />
+                    </HBox>
+                    <Label text="Gestion des Certifications" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                    <Separator />
+                    
+                    <Label text="Titre de la certification" />
+                    <TextField fx:id="tfTitle" promptText="Ex: Java Expert" />
+
+                    <Label text="Niveau" />
+                    <TextField fx:id="tfLevel" promptText="Ex: 1" />
+
+                    <Label text="Description" />
+                    <TextArea fx:id="taDescription" promptText="Description détaillée..." prefHeight="100.0" wrapText="true" />
+
+                    <VBox spacing="10.0" alignment="CENTER">
+                        <Button text="Ajouter" onAction="#ajouterCertification" maxWidth="Infinity" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" />
+                        <HBox spacing="10.0">
+                            <Button text="Modifier" onAction="#modifierCertification" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold;" />
+                            <Button text="Supprimer" onAction="#supprimerCertification" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold;" />
+                        </HBox>
+                        <Button text="Vider les champs" onAction="#clearFields" maxWidth="Infinity" />
+                    </VBox>
+                </VBox>
+
+                <!-- Liste (Droite) -->
+                <VBox spacing="10.0" style="-fx-padding: 10;">
+                    <Label text="Liste des Certifications" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+                    <TableView fx:id="tvCertifications" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableSelection">
+                        <columns>
+                            <TableColumn fx:id="colTitle" text="Titre" prefWidth="200" />
+                            <TableColumn fx:id="colLevel" text="Niveau" prefWidth="80" />
+                            <TableColumn fx:id="colDate" text="Date Obtention" prefWidth="150" />
+                            <TableColumn fx:id="colDesc" text="Description" prefWidth="250" />
+                        </columns>
+                    </TableView>
+                    <Label fx:id="lbStatus" text="Prêt" style="-fx-text-fill: gray;" />
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

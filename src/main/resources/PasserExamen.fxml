@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.PasserExamenController"
+            style="-fx-background-color: #0f3460;">
+    <children>
+        <VBox alignment="CENTER" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="lbTitle" text="EXAMEN EN COURS..." style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;" />
+                
+                <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #16213e; -fx-padding: 40; -fx-background-radius: 20;">
+                    <children>
+                        <Label text="Question 1/1" style="-fx-text-fill: #95a5a6;" />
+                        <Label text="Êtes-vous prêt à valider vos connaissances ?" style="-fx-text-fill: white; -fx-font-size: 18; -fx-text-alignment: CENTER;" wrapText="true" maxWidth="500.0" />
+                        
+                        <RadioButton text="Oui, je suis prêt" selected="true" style="-fx-text-fill: white;" />
+                    </children>
+                </VBox>
+
+                <Button text="SOUMETTRE L'EXAMEN" onAction="#submitExam" 
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 10 30; -fx-background-radius: 10; -fx-cursor: hand;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

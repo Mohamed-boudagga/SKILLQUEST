@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ExamenInfoController"
+            style="-fx-background-color: #1a1a2e;">
+    <children>
+        <VBox alignment="CENTER" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0"
+              style="-fx-background-color: #16213e; -fx-background-radius: 20; -fx-border-color: #0f3460; -fx-border-width: 2; -fx-border-radius: 20;">
+            <children>
+                <Label text="DÉTAILS DE L'EXAMEN" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #e94560;" />
+                
+                <VBox spacing="15.0" alignment="CENTER_LEFT" maxWidth="400.0">
+                    <HBox spacing="10.0">
+                        <Label text="Examen :" style="-fx-text-fill: #95a5a6; -fx-font-size: 16;" />
+                        <Label fx:id="lbNom" text="Java Fundamentals" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;" />
+                    </HBox>
+                    <HBox spacing="10.0">
+                        <Label text="Niveau :" style="-fx-text-fill: #95a5a6; -fx-font-size: 16;" />
+                        <Label fx:id="lbLevel" text="1" style="-fx-text-fill: #f1c40f; -fx-font-size: 18; -fx-font-weight: bold;" />
+                    </HBox>
+                    <HBox spacing="10.0">
+                        <Label text="Durée :" style="-fx-text-fill: #95a5a6; -fx-font-size: 16;" />
+                        <Label fx:id="lbDuree" text="60 minutes" style="-fx-text-fill: #2ecc71; -fx-font-size: 18; -fx-font-weight: bold;" />
+                    </HBox>
+                </VBox>
+
+                <Separator maxWidth="300.0" style="-fx-opacity: 0.3;" />
+
+                <Text text="Assurez-vous d'être prêt avant de commencer. Une fois lancé, le chronomètre ne pourra pas être arrêté."
+                      wrappingWidth="450.0" textAlignment="CENTER" style="-fx-fill: #bdc3c7; -fx-font-size: 14;" />
+
+                <Button text="GET STARTED" onAction="#startExam" 
+                        style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold; -fx-padding: 10 40; -fx-background-radius: 30; -fx-cursor: hand;" />
+                
+                <Button text="Annuler" onAction="#cancel" style="-fx-text-fill: #95a5a6; -fx-background-color: transparent; -fx-cursor: hand;" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
