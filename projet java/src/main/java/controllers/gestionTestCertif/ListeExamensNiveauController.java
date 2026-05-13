@@ -81,9 +81,6 @@ public class ListeExamensNiveauController {
     }
 
     @FXML public void retourMenu(javafx.event.ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/SelectionNiveau.fxml"));
-            ((Stage) ((Node) event.getSource()).getScene().getWindow()).setScene(new Scene(root));
-        } catch (IOException e) { e.printStackTrace(); }
+        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 }

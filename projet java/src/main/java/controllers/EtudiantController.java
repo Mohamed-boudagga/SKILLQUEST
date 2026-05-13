@@ -1,19 +1,26 @@
 package controllers;
 
+import controllers.gestionCours.UserCourseSpaceController;
 import controllers.gestionJeux.GalaxyDefenderController;
+import controllers.gestionTestCertif.ListeExamensNiveauController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import models.Etudiant;
 import models.ProgressionCours;
 import models.Test;
@@ -39,10 +46,12 @@ public class EtudiantController implements Initializable {
     @FXML private FlowPane badgesPane;
     @FXML private StackPane avatarStack;
     @FXML private ImageView photoProfilView;
-    @FXML private Button btnProfil, btnCours, btnTests, btnClassement, btnJeux, btnExamens;
+    @FXML private Button btnProfil, btnCours, btnClassement, btnJeux, btnExamens;
 
     // Sections
-    @FXML private VBox sectionProfil, sectionCours, sectionTests, sectionClassement, sectionJeux, sectionExamens;
+    @FXML private VBox sectionProfil, sectionCours, sectionClassement, sectionJeux, sectionExamens;
+
+    @FXML private FlowPane fpNiveaux;
 
     // Tableaux
     @FXML private TableView<ProgressionCours> tableCoursProgression;
@@ -76,6 +85,8 @@ public class EtudiantController implements Initializable {
 
         chargerDonneesProfil();
         configurerTables();
+        SessionManager.setCoursUserId(etudiant.getId());
+        SessionManager.setCoursUserLevel(etudiant.getNiveau());
         afficherProfil(null);
     }
 
@@ -190,8 +201,6 @@ public class EtudiantController implements Initializable {
 
     @FXML
     private void afficherTests(ActionEvent e) {
-        setSectionsVisibility(sectionTests);
-        updateSidebarStyles(btnTests);
         tableTestsDispo.setItems(FXCollections.observableArrayList(serviceTest.getAll()));
     }
 
@@ -212,6 +221,56 @@ public class EtudiantController implements Initializable {
     private void afficherExamens(ActionEvent e) {
         setSectionsVisibility(sectionExamens);
         updateSidebarStyles(btnExamens);
+        SessionManager.getInstance().setAdmin(false);
+        loadNiveauxCards();
+    }
+
+    private void loadNiveauxCards() {
+        fpNiveaux.getChildren().clear();
+        for (int i = 0; i <= 11; i++) fpNiveaux.getChildren().add(createLevelCard(i));
+    }
+
+    private Node createLevelCard(int level) {
+        VBox card = new VBox(10);
+        card.setAlignment(Pos.CENTER);
+        card.setPrefSize(160, 200);
+        card.setStyle("-fx-background-color:#16213e; -fx-border-color:#e94560; -fx-border-width:2; -fx-border-radius:12; -fx-background-radius:12; -fx-padding:15;");
+
+        Label title = new Label("NIVEAU " + level);
+        title.setStyle("-fx-text-fill:#e94560; -fx-font-size:15; -fx-font-weight:bold;");
+
+        boolean locked = !SessionManager.getInstance().isAdmin() && level > SessionManager.getInstance().getCurrentLevel();
+        boolean done   = !SessionManager.getInstance().isAdmin() && level < SessionManager.getInstance().getCurrentLevel();
+
+        Label badge = new Label(done ? "COMPLÉTÉ" : locked ? "VERROUILLÉ" : "ACTUEL");
+        String badgeBase = "-fx-font-size:10; -fx-font-weight:bold; -fx-padding:3 8; -fx-background-radius:10; -fx-text-fill:white; -fx-background-color:";
+        badge.setStyle(badgeBase + (done ? "#27ae60;" : locked ? "#7f8c8d;" : "#0f3460;"));
+
+        Button btn = new Button("PASSER L'EXAMEN");
+        btn.setMaxWidth(150);
+        btn.setStyle("-fx-background-color:#e94560; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:20; -fx-cursor:hand; -fx-font-size:11;");
+        btn.setDisable(locked);
+
+        final int lvl = level;
+        btn.setOnAction(ev -> {
+            FXMLLoader loader = App.ouvrirFenetreModalAvecLoader("ListeExamensNiveau", "Examens Niveau " + lvl);
+            if (loader != null) {
+                loader.<ListeExamensNiveauController>getController().setNiveau(lvl);
+                Stage s = App.getStageFromLoader(loader);
+                if (s != null) s.showAndWait();
+            }
+        });
+
+        card.getChildren().addAll(title, badge, btn);
+
+        if (locked) {
+            card.setEffect(new GaussianBlur(4));
+            card.setOpacity(0.5);
+        } else {
+            card.setOnMouseEntered(ev -> card.setStyle("-fx-background-color:#0f3460; -fx-border-color:#e94560; -fx-border-width:2; -fx-border-radius:12; -fx-background-radius:12; -fx-padding:15; -fx-scale-x:1.05; -fx-scale-y:1.05;"));
+            card.setOnMouseExited(ev  -> card.setStyle("-fx-background-color:#16213e; -fx-border-color:#e94560; -fx-border-width:2; -fx-border-radius:12; -fx-background-radius:12; -fx-padding:15; -fx-scale-x:1; -fx-scale-y:1;"));
+        }
+        return card;
     }
 
     @FXML
@@ -232,6 +291,15 @@ public class EtudiantController implements Initializable {
     @FXML
     private void lancerGalaxy(ActionEvent e) {
         GalaxyDefenderController.launch(App.getPrimaryStage());
+    }
+
+    @FXML
+    private void ouvrirEspaceCours(ActionEvent e) {
+        FXMLLoader loader = App.ouvrirFenetreModalAvecLoader("UserCourseSpace", "Cours SkillQuest");
+        if (loader != null) {
+            Stage s = App.getStageFromLoader(loader);
+            if (s != null) s.showAndWait();
+        }
     }
 
     @FXML
@@ -322,7 +390,7 @@ public class EtudiantController implements Initializable {
     // UTILITAIRES
     // =====================================================================
     private void setSectionsVisibility(VBox activeSection) {
-        VBox[] sections = {sectionProfil, sectionCours, sectionTests, sectionClassement, sectionJeux, sectionExamens};
+        VBox[] sections = {sectionProfil, sectionCours, sectionClassement, sectionJeux, sectionExamens};
         for (VBox s : sections) {
             if (s == null) continue;
             s.setVisible(s == activeSection);
@@ -331,7 +399,7 @@ public class EtudiantController implements Initializable {
     }
 
     private void updateSidebarStyles(Button activeBtn) {
-        Button[] buttons = {btnProfil, btnCours, btnTests, btnClassement, btnJeux, btnExamens};
+        Button[] buttons = {btnProfil, btnCours, btnClassement, btnJeux, btnExamens};
         for (Button b : buttons) {
             if (b == null) continue;
             if (b == activeBtn) {

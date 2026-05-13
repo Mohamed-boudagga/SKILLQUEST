@@ -172,6 +172,11 @@ public class AdminController implements Initializable {
     }
 
     @FXML
+    private void ouvrirEspaceCours(ActionEvent e) {
+        App.ouvrirFenetreModal("GestionCours", "Espace Cours SkillQuest");
+    }
+
+    @FXML
     private void ouvrirGestionJeux(ActionEvent e) {
         App.ouvrirFenetreModal("AdminGames", "Gestion des Jeux (Avancé)");
     }

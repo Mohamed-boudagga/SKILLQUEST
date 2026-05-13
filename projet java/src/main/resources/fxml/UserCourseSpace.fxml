@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.gestionCours.UserCourseSpaceController"
+      prefWidth="720" prefHeight="600" spacing="20"
+      style="-fx-background-color:#1a1a2e; -fx-padding:30;">
+
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Label fx:id="lblNiveauUser" text="Vos cours disponibles"
+               style="-fx-text-fill:#e94560; -fx-font-size:20; -fx-font-weight:bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="✕ Fermer" onAction="#fermer"
+                style="-fx-background-color:#0f3460; -fx-text-fill:#a8a8b3;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:8 14;"/>
+    </HBox>
+
+    <Separator style="-fx-opacity:0.2;"/>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background-color:transparent; -fx-background:transparent; -fx-border-color:transparent;">
+        <VBox fx:id="vbCours" spacing="15" style="-fx-padding:5;"/>
+    </ScrollPane>
+
+</VBox>

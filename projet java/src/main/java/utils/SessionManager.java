@@ -40,4 +40,16 @@ public class SessionManager {
     }
 
     public boolean isExamCompleted(int examId) { return completedExamIds.contains(examId); }
+
+    // ── Cours module static helpers ──────────────────────────────────
+    private static int coursUserId = 1;
+    private static int coursUserLevel = 1;
+    private static String addCourseReturnPath = "/fxml/GestionCours.fxml";
+
+    public static int getCoursUserId() { return coursUserId; }
+    public static void setCoursUserId(int id) { coursUserId = id; }
+    public static int getCoursUserLevel() { return coursUserLevel; }
+    public static void setCoursUserLevel(int level) { coursUserLevel = Math.max(1, Math.min(6, level)); }
+    public static String getAddCourseReturnPath() { return addCourseReturnPath; }
+    public static void setAddCourseReturnPath(String path) { addCourseReturnPath = path; }
 }

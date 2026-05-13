@@ -266,26 +266,22 @@ public class MyDataBase {
             // ── MODULE TEST / CERTIFICATION ───────────────────────────
             st.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS `exam` (" +
-                "  `id`          INT          NOT NULL AUTO_INCREMENT," +
-                "  `titre`       VARCHAR(200) NOT NULL," +
-                "  `description` TEXT," +
-                "  `niveau`      INT          NOT NULL DEFAULT 1," +
-                "  `duree`       INT          NOT NULL DEFAULT 30," +
-                "  `score_min`   INT          NOT NULL DEFAULT 50," +
+                "  `id`           INT          NOT NULL AUTO_INCREMENT," +
+                "  `nom`          VARCHAR(200) NOT NULL," +
+                "  `level`        INT          NOT NULL DEFAULT 1," +
+                "  `dureeMinutes` INT          NOT NULL DEFAULT 30," +
                 "  PRIMARY KEY (`id`)" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
             System.out.println("OK Table 'exam' verifiee/creee.");
 
             st.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS `exam_question` (" +
-                "  `id`             INT  NOT NULL AUTO_INCREMENT," +
-                "  `exam_id`        INT  NOT NULL," +
-                "  `question_text`  TEXT NOT NULL," +
-                "  `opt1`           VARCHAR(255)," +
-                "  `opt2`           VARCHAR(255)," +
-                "  `opt3`           VARCHAR(255)," +
-                "  `opt4`           VARCHAR(255)," +
-                "  `correct_answer` VARCHAR(255)," +
+                "  `id`                   INT  NOT NULL AUTO_INCREMENT," +
+                "  `exam_id`              INT  NOT NULL," +
+                "  `text`                 TEXT NOT NULL," +
+                "  `options`              TEXT," +
+                "  `correct_option_index` INT  NOT NULL DEFAULT 0," +
+                "  `points`              INT  NOT NULL DEFAULT 1," +
                 "  PRIMARY KEY (`id`)," +
                 "  CONSTRAINT `fk_eq_exam` FOREIGN KEY (`exam_id`) REFERENCES `exam`(`id`) ON DELETE CASCADE" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
@@ -294,15 +290,25 @@ public class MyDataBase {
             st.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS `certification` (" +
                 "  `id`            INT          NOT NULL AUTO_INCREMENT," +
-                "  `etudiant_id`   INT          NOT NULL," +
-                "  `exam_id`       INT          NOT NULL," +
-                "  `score`         INT          NOT NULL," +
-                "  `date_obtention` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP," +
-                "  PRIMARY KEY (`id`)," +
-                "  CONSTRAINT `fk_cert_etudiant` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant`(`id`) ON DELETE CASCADE," +
-                "  CONSTRAINT `fk_cert_exam`     FOREIGN KEY (`exam_id`)     REFERENCES `exam`(`id`) ON DELETE CASCADE" +
+                "  `title`         VARCHAR(200) NOT NULL," +
+                "  `level`         INT          NOT NULL DEFAULT 1," +
+                "  `dateObtention` DATE," +
+                "  `description`   TEXT," +
+                "  PRIMARY KEY (`id`)" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
             System.out.println("OK Table 'certification' verifiee/creee.");
+
+            // ── MODULE COURS (leçons) ─────────────────────────────────
+            st.executeUpdate(
+                "CREATE TABLE IF NOT EXISTS `lecon` (" +
+                "  `id`          INT          NOT NULL AUTO_INCREMENT," +
+                "  `titre`       VARCHAR(200) NOT NULL," +
+                "  `description` TEXT," +
+                "  `idcours`     INT          NOT NULL," +
+                "  PRIMARY KEY (`id`)," +
+                "  CONSTRAINT `fk_lecon_cours` FOREIGN KEY (`idcours`) REFERENCES `cours`(`id`) ON DELETE CASCADE" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            System.out.println("OK Table 'lecon' verifiee/creee.");
 
         } catch (SQLException e) {
             System.out.println("ERREUR creation tables : " + e.getMessage());
@@ -318,7 +324,11 @@ public class MyDataBase {
             { "etudiant", "telephone",    "VARCHAR(20) DEFAULT NULL"        },
             { "etudiant", "sexe",         "ENUM('M','F') DEFAULT NULL"      },
             { "etudiant", "est_bloque",   "TINYINT(1) NOT NULL DEFAULT 0"   },
-            { "etudiant", "photo_profil", "VARCHAR(500) DEFAULT NULL"        }
+            { "etudiant", "photo_profil", "VARCHAR(500) DEFAULT NULL"        },
+            { "cours",    "niveau",         "VARCHAR(20) DEFAULT NULL"       },
+            { "cours",    "contenue",       "TEXT NULL"                      },
+            { "cours",    "idAjouteur",     "INT DEFAULT NULL"               },
+            { "cours",    "dateDeCreation", "DATETIME DEFAULT NULL"          }
         };
         for (String[] c : colonnes) {
             ajouterColonneSiAbsente(c[0], c[1], c[2]);

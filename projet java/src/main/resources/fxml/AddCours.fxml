@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.gestionCours.AddCoursController"
+      prefWidth="500" prefHeight="490" spacing="18"
+      style="-fx-background-color:#1a1a2e; -fx-padding:30;">
+
+    <Label fx:id="lblTitre" text="Ajouter un Cours"
+           style="-fx-text-fill:#e94560; -fx-font-size:20; -fx-font-weight:bold;"/>
+
+    <Separator style="-fx-opacity:0.2;"/>
+
+    <VBox spacing="6">
+        <Label text="Titre *" style="-fx-text-fill:#a8a8b3;"/>
+        <TextField fx:id="tfTitre" promptText="Titre du cours"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#7f8c8d; -fx-border-color:#0f3460;
+                          -fx-border-radius:5; -fx-background-radius:5; -fx-padding:8;"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Description" style="-fx-text-fill:#a8a8b3;"/>
+        <TextArea fx:id="taDescription" promptText="Description du cours..." prefRowCount="3"
+                  style="-fx-background-color:#16213e; -fx-text-fill:white;
+                         -fx-prompt-text-fill:#7f8c8d; -fx-border-color:#0f3460;
+                         -fx-border-radius:5; -fx-background-radius:5; -fx-padding:8;"/>
+    </VBox>
+
+    <VBox spacing="6">
+        <Label text="Niveau (1–6)" style="-fx-text-fill:#a8a8b3;"/>
+        <ComboBox fx:id="cbNiveau" maxWidth="Infinity"
+                  style="-fx-background-color:#16213e; -fx-border-color:#0f3460;
+                         -fx-border-radius:5; -fx-background-radius:5;"/>
+    </VBox>
+
+    <VBox spacing="6" VBox.vgrow="ALWAYS">
+        <Label text="Contenu" style="-fx-text-fill:#a8a8b3;"/>
+        <TextArea fx:id="taContenue" promptText="Contenu du cours..." prefRowCount="4"
+                  style="-fx-background-color:#16213e; -fx-text-fill:white;
+                         -fx-prompt-text-fill:#7f8c8d; -fx-border-color:#0f3460;
+                         -fx-border-radius:5; -fx-background-radius:5; -fx-padding:8;"/>
+    </VBox>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#annuler"
+                style="-fx-background-color:#0f3460; -fx-text-fill:#a8a8b3;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:9 20;"/>
+        <Button text="💾 Sauvegarder" onAction="#sauvegarder"
+                style="-fx-background-color:#e94560; -fx-text-fill:white; -fx-font-weight:bold;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:9 20;"/>
+    </HBox>
+
+</VBox>

@@ -23,8 +23,6 @@
             <Button fx:id="btnCours" text="📚  Mes Cours" onAction="#afficherCours"
                     maxWidth="Infinity" style="-fx-background-color:transparent; -fx-text-fill:white; -fx-alignment:CENTER_LEFT; -fx-padding:12 20; -fx-cursor:hand;"/>
 
-            <Button fx:id="btnTests" text="📝  Tests" onAction="#afficherTests"
-                    maxWidth="Infinity" style="-fx-background-color:transparent; -fx-text-fill:white; -fx-alignment:CENTER_LEFT; -fx-padding:12 20; -fx-cursor:hand;"/>
 
             <Button fx:id="btnClassement" text="🏆  Classement" onAction="#afficherClassement"
                     maxWidth="Infinity" style="-fx-background-color:transparent; -fx-text-fill:white; -fx-alignment:CENTER_LEFT; -fx-padding:12 20; -fx-cursor:hand;"/>
@@ -135,6 +133,8 @@
                 <HBox spacing="10" alignment="CENTER_LEFT">
                     <Label text="Mes Cours en cours" style="-fx-text-fill:white; -fx-font-size:18px; -fx-font-weight:bold;"/>
                     <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="📖 Cours SkillQuest" onAction="#ouvrirEspaceCours"
+                            style="-fx-background-color:#0f3460; -fx-text-fill:#e94560; -fx-font-weight:bold; -fx-cursor:hand; -fx-border-color:#e94560; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:7 14;"/>
                     <Button text="+ S'inscrire à un cours" onAction="#ouvrirFormInscription"
                             style="-fx-background-color:#27ae60; -fx-text-fill:white; -fx-font-weight:bold; -fx-cursor:hand;"/>
                 </HBox>
@@ -232,13 +232,17 @@
                 </HBox>
             </VBox>
 
-            <!-- Section Examens & Certifications -->
-            <VBox fx:id="sectionExamens" spacing="30" alignment="TOP_CENTER" VBox.vgrow="ALWAYS" visible="false" managed="false">
-                <Label text="EXAMENS &amp; CERTIFICATIONS" style="-fx-text-fill:white; -fx-font-size:24px; -fx-font-weight:bold; -fx-padding: 10 0 10 0;"/>
-                <Label text="Passez des examens par niveau et décrochez vos certifications."
-                       style="-fx-text-fill: #a8a8b3; -fx-font-size: 14px;" wrapText="true" maxWidth="600"/>
-                <Button text="ACCÉDER AUX EXAMENS" onAction="#lancerExamens"
-                        style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 50; -fx-background-radius: 30; -fx-cursor: hand;"/>
+            <!-- Section Examens & Certifications (inline) -->
+            <VBox fx:id="sectionExamens" spacing="15" VBox.vgrow="ALWAYS" visible="false" managed="false">
+                <Label text="EXAMENS &amp; CERTIFICATIONS"
+                       style="-fx-text-fill:white; -fx-font-size:22px; -fx-font-weight:bold;"/>
+                <Label text="Sélectionnez un niveau pour voir les examens disponibles."
+                       style="-fx-text-fill: #a8a8b3; -fx-font-size: 13px;"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                            style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+                    <FlowPane fx:id="fpNiveaux" hgap="15" vgap="15" alignment="CENTER" prefWrapLength="800"
+                              style="-fx-padding: 10;"/>
+                </ScrollPane>
             </VBox>
 
         </VBox>
