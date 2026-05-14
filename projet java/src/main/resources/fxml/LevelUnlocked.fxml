@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="350.0" prefWidth="550.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.LevelUnlockedController"
+            style="-fx-background-color: #16213e; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #fbbf24; -fx-border-width: 3;">
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding><Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/></padding>
+        <Label text="FÉLICITATIONS !" style="-fx-text-fill: #fbbf24; -fx-font-size: 38; -fx-font-weight: bold;"/>
+        <Label text="NIVEAU DÉBLOQUÉ !" style="-fx-text-fill: #e94560; -fx-font-size: 18; -fx-font-weight: bold;"/>
+        <Label fx:id="lbMessage" text="Message"
+               style="-fx-text-fill: white; -fx-font-size: 16; -fx-background-color: #0f3460; -fx-padding: 10 30; -fx-background-radius: 25;"
+               textAlignment="CENTER" wrapText="true"/>
+        <Button text="OBTENIR MON CERTIFICAT" onAction="#closeWindow"
+                style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 12 40; -fx-background-radius: 25; -fx-cursor: hand;"/>
+    </VBox>
+</AnchorPane>

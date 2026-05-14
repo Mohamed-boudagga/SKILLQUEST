@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.gestionTestCertif.QuizExamController"
+      prefHeight="600.0" prefWidth="800.0" spacing="20"
+      style="-fx-background-color: #1a1a2e; -fx-padding: 40;">
+
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label fx:id="lbTimer" text="00:00"
+               style="-fx-text-fill: #e94560; -fx-font-size: 24; -fx-font-weight: bold; -fx-border-color: #e94560; -fx-border-width: 2; -fx-padding: 10; -fx-border-radius: 10;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lbProgress" text="Question 1/5"
+               style="-fx-text-fill: #fbbf24; -fx-font-size: 20; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <ProgressBar fx:id="pbProgress" prefWidth="800" progress="0.2"
+                 style="-fx-accent: #e94560;"/>
+
+    <VBox alignment="CENTER" spacing="30" VBox.vgrow="ALWAYS"
+          style="-fx-background-color: #16213e; -fx-background-radius: 20; -fx-border-color: #0f3460; -fx-border-width: 3; -fx-padding: 30;">
+        <Label fx:id="lbQuestion" text="Chargement..." wrapText="true" textAlignment="CENTER"
+               style="-fx-text-fill: white; -fx-font-size: 26; -fx-font-weight: bold;"/>
+        <VBox fx:id="vbOptions" spacing="15" alignment="CENTER"/>
+    </VBox>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button fx:id="btnNext" text="SUIVANT" onAction="#handleNext"
+                style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 10 40; -fx-background-radius: 30; -fx-cursor: hand;"/>
+        <Button fx:id="btnFinish" text="TERMINER" onAction="#handleFinish" visible="false"
+                style="-fx-background-color: #4ade80; -fx-text-fill: #1a1a2e; -fx-font-size: 18; -fx-font-weight: bold; -fx-padding: 10 40; -fx-background-radius: 30; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>

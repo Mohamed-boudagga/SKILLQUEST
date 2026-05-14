@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import models.*;
 import services.*;
+import utils.SessionManager;
 
 import java.net.URL;
 import java.util.List;
@@ -28,6 +29,7 @@ public class AdminController implements Initializable {
     @FXML private Button btnTests;
     @FXML private Button btnCertificats;
     @FXML private Button btnJeux;
+    @FXML private Button btnExamsCertifs;
     @FXML private Label  titreSection;
 
     // ── Barre de recherche et Filtres ────────────────────────────────
@@ -169,6 +171,22 @@ public class AdminController implements Initializable {
         chargerJeux();
     }
 
+    @FXML
+    private void ouvrirEspaceCours(ActionEvent e) {
+        App.ouvrirFenetreModal("GestionCours", "Espace Cours SkillQuest");
+    }
+
+    @FXML
+    private void ouvrirGestionJeux(ActionEvent e) {
+        App.ouvrirFenetreModal("AdminGames", "Gestion des Jeux (Avancé)");
+    }
+
+    @FXML
+    private void ouvrirGestionExamsCertifs(ActionEvent e) {
+        SessionManager.getInstance().setAdmin(true);
+        App.ouvrirFenetreModal("SelectionNiveau", "Gestion Examens & Certifications");
+    }
+
     private void setTablesVisibility(TableView<?> activeTable) {
         tableEtudiants.setVisible(activeTable == tableEtudiants);
         tableEtudiants.setManaged(activeTable == tableEtudiants);
@@ -183,7 +201,7 @@ public class AdminController implements Initializable {
     }
 
     private void updateSidebarStyles(Button activeButton) {
-        Button[] buttons = {btnEtudiants, btnCours, btnTests, btnCertificats, btnJeux};
+        Button[] buttons = {btnEtudiants, btnCours, btnTests, btnCertificats, btnJeux, btnExamsCertifs};
         for (Button b : buttons) {
             if (b == activeButton) {
                 b.setStyle("-fx-background-color:#e94560; -fx-text-fill:white; -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10; -fx-cursor:hand; -fx-alignment:CENTER-LEFT;");

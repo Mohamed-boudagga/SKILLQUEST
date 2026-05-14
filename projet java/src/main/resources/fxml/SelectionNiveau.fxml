@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.gestionTestCertif.SelectionNiveauController"
+            style="-fx-background-color: #1a1a2e;">
+    <VBox alignment="CENTER" spacing="40.0"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding><Insets top="40" bottom="40" left="40" right="40"/></padding>
+        <HBox alignment="CENTER_LEFT">
+            <Button text="← FERMER" onAction="#retourLogin"
+                    style="-fx-background-color: transparent; -fx-text-fill: #e94560; -fx-font-weight: bold; -fx-border-color: #e94560; -fx-border-radius: 5; -fx-cursor: hand;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="SÉLECTION DES NIVEAUX"
+                   style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+            <FlowPane fx:id="fpNiveaux" hgap="30.0" vgap="30.0" alignment="CENTER"/>
+        </ScrollPane>
+    </VBox>
+</AnchorPane>

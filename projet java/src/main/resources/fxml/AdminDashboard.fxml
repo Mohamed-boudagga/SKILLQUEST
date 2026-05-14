@@ -57,6 +57,27 @@
                            -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
                            -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
 
+            <Button text="📖  Espace Cours"
+                    onAction="#ouvrirEspaceCours"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button text="⚙  Quiz Manager"
+                    onAction="#ouvrirGestionJeux"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:12px; -fx-background-radius:6; -fx-padding:8 10 8 30;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
+            <Button fx:id="btnExamsCertifs" text="🎓  Examens &amp; Certifs"
+                    onAction="#ouvrirGestionExamsCertifs"
+                    maxWidth="Infinity"
+                    style="-fx-background-color:transparent; -fx-text-fill:#a8a8b3;
+                           -fx-font-size:13px; -fx-background-radius:6; -fx-padding:10;
+                           -fx-cursor:hand; -fx-alignment:CENTER-LEFT;"/>
+
             <Region VBox.vgrow="ALWAYS"/>
 
             <Button text="🚪  Déconnexion"

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.gestionCours.AddLeconController"
+      prefWidth="640" prefHeight="600" spacing="15"
+      style="-fx-background-color:#1a1a2e; -fx-padding:25;">
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="lblCoursTitre" text="Leçons"
+               style="-fx-text-fill:#e94560; -fx-font-size:18; -fx-font-weight:bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="✕ Fermer" onAction="#fermer"
+                style="-fx-background-color:#0f3460; -fx-text-fill:#a8a8b3;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:6 12;"/>
+    </HBox>
+
+    <Separator style="-fx-opacity:0.2;"/>
+
+    <Label text="Leçons existantes" style="-fx-text-fill:#a8a8b3; -fx-font-size:13;"/>
+
+    <ScrollPane fitToWidth="true" prefHeight="200"
+                style="-fx-background-color:transparent; -fx-background:transparent;
+                       -fx-border-color:#0f3460; -fx-border-radius:5;">
+        <VBox fx:id="vbLecons" spacing="6" style="-fx-padding:6;"/>
+    </ScrollPane>
+
+    <Separator style="-fx-opacity:0.2;"/>
+
+    <Label text="Nouvelle Leçon / Modifier" style="-fx-text-fill:white; -fx-font-weight:bold;"/>
+
+    <VBox spacing="6">
+        <Label text="Titre *" style="-fx-text-fill:#a8a8b3;"/>
+        <TextField fx:id="tfTitreLecon" promptText="Titre de la leçon"
+                   style="-fx-background-color:#16213e; -fx-text-fill:white;
+                          -fx-prompt-text-fill:#7f8c8d; -fx-border-color:#0f3460;
+                          -fx-border-radius:5; -fx-background-radius:5; -fx-padding:7;"/>
+    </VBox>
+
+    <VBox spacing="6" VBox.vgrow="ALWAYS">
+        <Label text="Description" style="-fx-text-fill:#a8a8b3;"/>
+        <TextArea fx:id="taDescLecon" promptText="Description de la leçon..." prefRowCount="3"
+                  style="-fx-background-color:#16213e; -fx-text-fill:white;
+                         -fx-prompt-text-fill:#7f8c8d; -fx-border-color:#0f3460;
+                         -fx-border-radius:5; -fx-background-radius:5; -fx-padding:7;"/>
+    </VBox>
+
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="Annuler" onAction="#annuler"
+                style="-fx-background-color:#0f3460; -fx-text-fill:#a8a8b3;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:8 16;"/>
+        <Button text="+ Sauvegarder" onAction="#sauvegarderLecon"
+                style="-fx-background-color:#e94560; -fx-text-fill:white; -fx-font-weight:bold;
+                       -fx-cursor:hand; -fx-background-radius:6; -fx-padding:8 16;"/>
+    </HBox>
+
+</VBox>
